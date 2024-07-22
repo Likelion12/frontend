@@ -1,0 +1,40 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login form div {
+  margin-bottom: 10px;
+}
+
+.login form label {
+  margin-right: 10px;
+}
+
+.login form input {
+  padding: 5px;
+}
+
+.login button {
+  padding: 10px;
+  background-color: #ffc107;
+  border: none;
+  cursor: pointer;
+}
+
+.login p {
+  margin-top: 20px;
+}
+
+.login a {
+  color: #007bff;
+  text-decoration: none;
+}
