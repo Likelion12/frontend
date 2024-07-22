@@ -24,7 +24,7 @@ const Detail = () => {
           </div>
           <p>6/8</p>
         </div>
-        <p>부차가 가끔 수인 ...</p>
+        <p>크루 설명 블라블라</p>
         <div className="related-events">
           <h3>관련 소셜링</h3>
           <div className="card-list">
