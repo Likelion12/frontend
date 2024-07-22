@@ -1,19 +1,19 @@
 import React from "react";
-import Header from "./Header.js";
-import SearchBar from "./SearchBar.js";
-import RegistrationForm from "./RegistrationForm.js";
-import CardList from "./CardList.js";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./Home.js";
+import Detail from "./Detail.js";
+import "./index.css";
 
 const App = () => {
   return (
-    <div className="app">
-      <Header />
-      <SearchBar />
-      <div className="main-content">
-        <RegistrationForm />
-        <CardList />
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/detail/:id" element={<Detail />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 };
 
