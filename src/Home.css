@@ -1,0 +1,11 @@
+.homepage nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.homepage .login-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
