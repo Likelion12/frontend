@@ -13,15 +13,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  background-color: #ffeb3b;
-}
-
-.header {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 40px;
-  width: 100%;
+  background-color: #f8e998;
 }
 
 .logo {
