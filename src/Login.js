@@ -1,45 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Login.css";
 
-function Login() {
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
-  const handleLogin = (e) => {
-    e.preventDefault();
-    // Implement your login logic here
-  };
-
+const Login = () => {
   return (
-    <div className="login">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor="id">ID:</label>
-          <input
-            type="text"
-            id="id"
-            value={id}
-            onChange={(e) => setId(e.target.value)}
-            required
-          />
+    <div className="login-container">
+      <h2>DoGether!</h2>
+      <p>운동할 사람이 없을 땐, DoGether!</p>
+      <form>
+        <div className="login-input">
+          <label htmlFor="id">ID</label>
+          <input type="text" id="id" name="id" />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+        <div className="login-input">
+          <label htmlFor="password">Password</label>
+          <input type="password" id="password" name="password" />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className="login-btn">
+          로그인
+        </button>
+        <button type="button" className="signup-btn">
+          회원가입
+        </button>
       </form>
-      <p>
-        계정이 없으신가요? <a href="/signup">회원가입</a>
-      </p>
+      <p className="forgot-password">ID/Password를 잊으셨나요?</p>
     </div>
   );
-}
+};
 
 export default Login;

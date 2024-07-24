@@ -16,6 +16,14 @@ body {
   background-color: #ffeb3b;
 }
 
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 40px;
+  width: 100%;
+}
+
 .logo {
   font-size: 24px;
   font-weight: bold;

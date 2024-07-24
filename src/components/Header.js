@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -25,6 +26,11 @@ const Header = () => {
             <a class="nav-link" href="#!">
               마이페이지
             </a>
+          </li>
+          <li class="nav-item">
+            <Link className="nav-link" to="/login">
+              로그인
+            </Link>
           </li>
         </ul>
       </nav>
