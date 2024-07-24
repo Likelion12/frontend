@@ -1,9 +1,14 @@
 import React from "react";
+import Social from "../Social";
+import "./RegistrationForm.css";
+import { Link } from "react-router-dom";
 
 const RegistrationForm = () => {
   return (
     <div className="registration-form">
-      <h2>소셜링 등록</h2>
+      <Link to="/Social">
+        <button className="Social-button">소셜링 등록</button>
+      </Link>
       <form>
         <div>
           <label>Title</label>
