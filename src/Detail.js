@@ -1,13 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Header from "./components/Header.js";
 
 const Detail = () => {
   const { id } = useParams();
 
   return (
     <div>
-      <Header />
       <div className="detail">
         <img src="placeholder.jpg" alt="Placeholder" />
         <h2>한강 주말 러닝 3KM</h2>

@@ -25,7 +25,6 @@ const Login = () => {
           </button>
         </Link>
       </form>
-      <p className="forgot-password">ID/Password를 잊으셨나요?</p>
     </div>
   );
 };
