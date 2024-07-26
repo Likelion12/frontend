@@ -1,0 +1,70 @@
+.main-container {
+  background-color: #fdf7e3;
+  padding: 20px;
+}
+
+.form-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  background-color: #fff3cd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.upload-button {
+  display: block;
+  margin: 0 auto;
+}
+
+.sport-button,
+.level-button,
+.gender-button,
+.price-button {
+  margin: 5px;
+  border: 1px solid black !important;
+  color: black !important;
+  border-radius: 8px !important;
+}
+
+.sport-button {
+  flex: 1 1 calc(20% - 10px);
+}
+
+.sport-button.active {
+  flex: 1 1 calc(20% - 10px);
+}
+
+.sport-button.active,
+.level-button.active,
+.gender-button.active,
+.price-button.active {
+  background-color: #ffc107 !important;
+  border-color: #ffc107 !important;
+  color: white !important;
+}
+
+.custom-range::-webkit-slider-thumb {
+  background: #ffc107; /* 클릭 시 노란색으로 변경 */
+  border: 1px solid #ffc107;
+}
+
+.custom-range::-moz-range-thumb {
+  background: #ffc107; /* 클릭 시 노란색으로 변경 */
+  border: 1px solid #ffc107;
+}
+
+.custom-range::-ms-thumb {
+  background: #ffc107; /* 클릭 시 노란색으로 변경 */
+  border: 1px solid #ffc107;
+}
+
+.text-center {
+  margin-top: 20px;
+}
