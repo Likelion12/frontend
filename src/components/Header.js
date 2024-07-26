@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../Home.css";
 
 const Header = () => {
   return (
@@ -22,19 +23,28 @@ const Header = () => {
               플레이스
             </a>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/map">
+              지도
+            </Link>
+          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="#!">
               마이페이지
             </a>
           </li>
-          <li class="nav-item">
-            <Link className="nav-link" to="/login">
-              로그인
-            </Link>
-          </li>
         </ul>
       </nav>
-      <div className="search-icon">🔍</div>
+      <div className="login-icon">
+        <Link
+          className="nav-link"
+          to="/login"
+          style={{ textDecoration: "none" }}
+        >
+          <img src="./login_icon.png"></img>
+        </Link>
+      </div>
     </header>
   );
 };
