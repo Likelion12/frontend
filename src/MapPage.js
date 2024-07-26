@@ -5,44 +5,6 @@ import "./MapPage.css";
 const MapPage = () => {
   return (
     <div className="map-page">
-      <header className="header">
-        <div className="logo">DoGether!</div>
-        <nav>
-          <ul className="nav justify-content-center">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                소셜링
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                크루
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                플레이스
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/map">
-                지도
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                마이페이지
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                로그인
-              </Link>
-            </li>
-          </ul>
-        </nav>
-        <div className="search-icon">🔍</div>
-      </header>
       <div className="map-container">
         <h2>지금 당신 근처의 운동을 즐겨보세요!</h2>
         <div className="selection-container">
