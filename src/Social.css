@@ -28,17 +28,9 @@
 .gender-button,
 .price-button {
   margin: 5px;
-  border: 1px solid black !important;
+  border: 1px solid rgb(238, 221, 70) !important;
   color: black !important;
   border-radius: 8px !important;
-}
-
-.sport-button {
-  flex: 1 1 calc(20% - 10px);
-}
-
-.sport-button.active {
-  flex: 1 1 calc(20% - 10px);
 }
 
 .sport-button.active,
@@ -50,19 +42,12 @@
   color: white !important;
 }
 
-.custom-range::-webkit-slider-thumb {
-  background: #ffc107; /* 클릭 시 노란색으로 변경 */
-  border: 1px solid #ffc107;
+.custom-input {
+  border: 2px solid #fff3cd !important; /* 텍스트 박스 테두리 색상 변경 */
 }
 
-.custom-range::-moz-range-thumb {
-  background: #ffc107; /* 클릭 시 노란색으로 변경 */
-  border: 1px solid #ffc107;
-}
-
-.custom-range::-ms-thumb {
-  background: #ffc107; /* 클릭 시 노란색으로 변경 */
-  border: 1px solid #ffc107;
+.custom-range {
+  border: 2px solid #fff3cd !important;
 }
 
 .text-center {

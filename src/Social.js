@@ -56,17 +56,25 @@ const Social = () => {
 
             <Form.Group controlId="formTitle" className="mb-3">
               <Form.Label>소셜링 명</Form.Label>
-              <Form.Control type="text" placeholder="소셜링 명" />
+              <Form.Control
+                type="text"
+                placeholder="소셜링 명"
+                className="custom-input"
+              />
             </Form.Group>
 
             <Form.Group controlId="formLocation" className="mb-3">
               <Form.Label>장소</Form.Label>
-              <Form.Control type="text" placeholder="장소" />
+              <Form.Control
+                type="text"
+                placeholder="장소"
+                className="custom-input"
+              />
             </Form.Group>
 
             <Form.Group controlId="formDate" className="mb-3">
               <Form.Label>날짜</Form.Label>
-              <Form.Control type="date" />
+              <Form.Control type="date" className="custom-input" />
             </Form.Group>
 
             <Form.Group controlId="formSports" className="mb-3">
@@ -177,6 +185,7 @@ const Social = () => {
                 as="textarea"
                 rows={3}
                 placeholder="소개글을 입력하세요"
+                className="custom-input"
               />
             </Form.Group>
 

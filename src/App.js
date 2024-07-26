@@ -4,13 +4,15 @@ import Home from "./Home.js";
 import Detail from "./Detail.js";
 import Login from "./Login.js";
 import Social from "./Social.js";
+import Header from "./components/Header.js";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   return (
     <Router>
-      <div className="app">
+      <Header />
+      <div className="app-content">
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/detail/:id" element={<Detail />} />
