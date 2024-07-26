@@ -23,6 +23,12 @@ const Header = () => {
               플레이스
             </a>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/map">
+              지도
+            </Link>
+          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="#!">
               마이페이지
