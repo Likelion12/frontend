@@ -4,7 +4,7 @@
 }
 
 .header {
-  background-color: #ffeb3b;
+  background-color: #f8e998;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -49,7 +49,7 @@
   align-items: center;
   gap: 20px;
   padding: 20px;
-  border: 2px solid #ffeb3b;
+  border: 2px solid #f8e998;
   border-radius: 10px;
   margin-bottom: 20px;
 }
