@@ -5,6 +5,7 @@ import Detail from "./Detail.js";
 import Login from "./Login.js";
 import Social from "./Social.js";
 import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   return (
