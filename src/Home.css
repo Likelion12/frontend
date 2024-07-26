@@ -21,3 +21,11 @@
   object-fit: cover;
   cursor: pointer;
 }
+
+a {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
