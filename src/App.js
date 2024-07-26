@@ -4,6 +4,9 @@ import Home from "./Home.js";
 import Detail from "./Detail.js";
 import Login from "./Login.js";
 import Social from "./Social.js";
+import Signup from "./Signup.js";
+import MapPage from "./MapPage.js";
+
 import "./index.css";
 
 const App = () => {
@@ -15,6 +18,8 @@ const App = () => {
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/Social" element={<Social />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/map" element={<MapPage />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </div>
     </Router>

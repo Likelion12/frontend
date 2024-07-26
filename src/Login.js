@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
@@ -18,9 +19,11 @@ const Login = () => {
         <button type="submit" className="login-btn">
           로그인
         </button>
-        <button type="button" className="signup-btn">
-          회원가입
-        </button>
+        <Link to="/signup" className="signup-link">
+          <button type="button" className="signup-btn">
+            회원가입
+          </button>
+        </Link>
       </form>
       <p className="forgot-password">ID/Password를 잊으셨나요?</p>
     </div>
