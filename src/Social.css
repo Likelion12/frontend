@@ -53,3 +53,34 @@
 .text-center {
   margin-top: 20px;
 }
+
+.img-preview-container {
+  position: relative;
+  display: inline-block;
+}
+
+.img-preview {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.img-remove-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(255, 0, 0, 0.7);
+  border: none;
+  color: white;
+  font-size: 20px;
+  line-height: 1;
+  padding: 2px 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.img-remove-button:hover {
+  background: rgba(255, 0, 0, 1);
+}

@@ -16,6 +16,8 @@ const Social = () => {
   const [genderValue, setGenderValue] = useState("");
   const [priceValue, setPriceValue] = useState("");
   const [capacity, setCapacity] = useState(0);
+  const [image, setImage] = useState(null); // 이미지 상태 추가
+  const [imagePreview, setImagePreview] = useState(null); // 이미지 미리보기 상태 추가
 
   const sports = [
     "축구",
@@ -41,6 +43,27 @@ const Social = () => {
     }
   };
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setImage(file);
+
+    // 미리보기 설정
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setImagePreview(null);
+    }
+  };
+
+  const handleImageRemove = () => {
+    setImage(null);
+    setImagePreview(null);
+  };
+
   return (
     <Container fluid className="main-container">
       <Row className="justify-content-center">
@@ -49,9 +72,36 @@ const Social = () => {
           <Form>
             <Form.Group controlId="formImage" className="text-center mb-3">
               <Form.Label className="d-block">사진 추가</Form.Label>
-              <Button variant="light" className="upload-button">
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                id="fileInput"
+                onChange={handleImageChange}
+              />
+              <Button
+                variant="light"
+                className="upload-button"
+                onClick={() => document.getElementById("fileInput").click()}
+              >
                 사진 추가
               </Button>
+              {imagePreview && (
+                <div className="mt-3 position-relative img-preview-container">
+                  <img
+                    src={imagePreview}
+                    alt="미리보기"
+                    className="img-preview"
+                  />
+                  <button
+                    type="button"
+                    className="img-remove-button"
+                    onClick={handleImageRemove}
+                  >
+                    &times;
+                  </button>
+                </div>
+              )}
             </Form.Group>
 
             <Form.Group controlId="formTitle" className="mb-3">
