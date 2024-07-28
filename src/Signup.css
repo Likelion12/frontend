@@ -43,29 +43,35 @@
   font-size: 14px;
 }
 
-.gender-options {
+.gender-selection {
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 10px;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
-.gender-options label {
+.gender-selection label {
   font-size: 14px;
 }
 
-.sport-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
-.sport-options button {
-  flex: 1 1 calc(33.333% - 10px);
+.category-button {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  background-color: #f8f8f8;
   cursor: pointer;
+  font-size: 14px;
+  background-color: white;
+  color: #333;
+}
+
+.category-button.selected {
+  background-color: #fbeda2;
+  color: black;
 }
 
 .signup-btn {
@@ -75,7 +81,13 @@
   border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
+  margin-top: 10px;
   background-color: #fbeda2;
   color: black;
+}
+
+.forgot-password {
+  font-size: 12px;
+  color: #888;
   margin-top: 10px;
 }
