@@ -1,38 +1,37 @@
-.app-content {
-  padding-top: 10px;
-}
-
 .login-icon {
   width: 50px;
   height: 50px;
   cursor: pointer;
-}
+} /*로그인 아이콘*/
 
 .login-icon img {
   width: 100%;
-  height: 100%;
+  margin-top: -7px;
   object-fit: cover;
   cursor: pointer;
-}
+} /*로그인 아이콘*/
 
 a {
   color: black;
-}
+} /*홈기본 글씨 색*/
 
 a:visited {
   color: black;
-}
+} /*홈기본 글씨 색*/
 
 .Social-button {
   background-color: #f8e998;
   border: none;
   color: black;
   font-weight: bold;
-  padding: 15px 32px;
-  text-align: center;
+  padding: 20px 32px;
   text-decoration: none;
-  display: inline-block;
+  margin-left: -76% !important;
   font-size: 16px;
   cursor: pointer;
   border-radius: 8px;
-}
+} /*소셜링 버튼 색*/
+
+.nav-link {
+  margin-top: 8px;
+} /*헤더 글씨 높이*/

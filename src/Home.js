@@ -8,7 +8,7 @@ import "./Home.css";
 const Home = () => {
   return (
     <div>
-      <SearchBar />
+      <SearchBar />{" "}
       <Link to="/Social">
         <button className="Social-button">소셜링 등록</button>
       </Link>
