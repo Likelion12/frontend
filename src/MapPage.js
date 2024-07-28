@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "./MapPage.css";
+import "leaflet/dist/leaflet.css";
 
 const MapPage = () => {
   return (
@@ -10,11 +11,19 @@ const MapPage = () => {
         <div className="selection-container">
           <div className="region-selection">
             <h3>지역 선택</h3>
-            <img
-              src="/path/to/your/map-image.png"
-              alt="지역 지도"
-              className="map-image"
-            />
+            <MapContainer
+              center={[37.5665, 126.978]}
+              zoom={12}
+              style={{ height: "400px", width: "100%" }}
+            >
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              />
+              <Marker position={[37.5665, 126.978]}>
+                <Popup>서울</Popup>
+              </Marker>
+            </MapContainer>
           </div>
           <div className="date-selection">
             <h3>날짜 선택</h3>
