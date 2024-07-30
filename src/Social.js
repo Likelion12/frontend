@@ -190,14 +190,22 @@ const Social = () => {
 
             <Form.Group controlId="formExercise" className="mb-3">
               <Form.Label>운동종목</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="운동종목 ID"
-                className="custom-input"
-                value={exerciseId}
-                onChange={(e) => setExerciseId(e.target.value)}
-                required
-              />
+              <div className="d-flex flex-wrap">
+                {sports.map((sport, index) => (
+                  <Button
+                    key={sport}
+                    variant={
+                      sportValue.includes(sport) ? "primary" : "outline-primary"
+                    }
+                    className="m-1 sport-button"
+                    onClick={() =>
+                      handleToggle(sport, setSportValue, sportValue)
+                    }
+                  >
+                    {sport}
+                  </Button>
+                ))}
+              </div>
             </Form.Group>
 
             <Form.Group controlId="formDate" className="mb-3">
