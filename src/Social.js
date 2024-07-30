@@ -9,6 +9,7 @@ import {
   ToggleButton,
 } from "react-bootstrap";
 import "./Social.css";
+import axios from "axios";
 
 const Social = () => {
   const [sportValue, setSportValue] = useState([]);
@@ -16,6 +17,18 @@ const Social = () => {
   const [genderValue, setGenderValue] = useState("");
   const [priceValue, setPriceValue] = useState("");
   const [capacity, setCapacity] = useState(0);
+  const [image, setImage] = useState(null); // 이미지 상태 추가
+  const [imagePreview, setImagePreview] = useState(null); // 이미지 미리보기 상태 추가
+
+  // 추가된 상태 변수
+  const [socialringName, setSocialringName] = useState("");
+  const [activityRegionId, setActivityRegionId] = useState("");
+  const [facilityId, setFacilityId] = useState("");
+  const [exerciseId, setExerciseId] = useState("");
+  const [socialringDate, setSocialringDate] = useState("");
+  const [socialringCost, setSocialringCost] = useState(0);
+  const [comment, setComment] = useState("");
+  const [commentSimple, setCommentSimple] = useState("");
 
   const sports = [
     "축구",
@@ -41,17 +54,102 @@ const Social = () => {
     }
   };
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setImage(file);
+
+    // 미리보기 설정
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setImagePreview(null);
+    }
+  };
+
+  const handleImageRemove = () => {
+    setImage(null);
+    setImagePreview(null);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("socialringName", socialringName);
+    formData.append("socialringImg", image);
+    formData.append("activityRegionId", activityRegionId);
+    formData.append("facilityId", facilityId);
+    formData.append("exerciseId", exerciseId);
+    formData.append("totalRecruits", capacity);
+    formData.append("socialringDate", socialringDate);
+    formData.append("socialringCost", socialringCost);
+    formData.append("comment", comment);
+    formData.append("commentSimple", commentSimple);
+
+    try {
+      const response = await axios.post("/your-api-endpoint", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: "Bearer YOUR_ACCESS_TOKEN", // 여기에 실제 토큰을 넣으세요
+        },
+      });
+
+      if (response.data.code === 1000) {
+        alert("소셜링 등록에 성공하였습니다.");
+        // 성공 시 필요한 추가 작업 (예: 페이지 이동)
+      }
+    } catch (error) {
+      console.error("소셜링 등록 실패:", error);
+      if (error.response) {
+        alert(`소셜링 등록 실패: ${error.response.data.message}`);
+      } else {
+        alert("소셜링 등록 중 오류가 발생했습니다.");
+      }
+    }
+  };
+
   return (
     <Container fluid className="main-container">
       <Row className="justify-content-center">
         <Col md={8} className="form-container">
           <h4 className="form-title">소셜링 등록</h4>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formImage" className="text-center mb-3">
               <Form.Label className="d-block">사진 추가</Form.Label>
-              <Button variant="light" className="upload-button">
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                id="fileInput"
+                onChange={handleImageChange}
+              />
+              <Button
+                variant="light"
+                className="upload-button"
+                onClick={() => document.getElementById("fileInput").click()}
+              >
                 사진 추가
               </Button>
+              {imagePreview && (
+                <div className="mt-3 position-relative img-preview-container">
+                  <img
+                    src={imagePreview}
+                    alt="미리보기"
+                    className="img-preview"
+                  />
+                  <button
+                    type="button"
+                    className="img-remove-button"
+                    onClick={handleImageRemove}
+                  >
+                    &times;
+                  </button>
+                </div>
+              )}
             </Form.Group>
 
             <Form.Group controlId="formTitle" className="mb-3">
@@ -60,123 +158,81 @@ const Social = () => {
                 type="text"
                 placeholder="소셜링 명"
                 className="custom-input"
+                value={socialringName}
+                onChange={(e) => setSocialringName(e.target.value)}
+                required
               />
             </Form.Group>
 
             <Form.Group controlId="formLocation" className="mb-3">
-              <Form.Label>장소</Form.Label>
+              <Form.Label>활동지역</Form.Label>
               <Form.Control
-                type="text"
-                placeholder="장소"
+                type="number"
+                placeholder="활동지역 ID"
                 className="custom-input"
+                value={activityRegionId}
+                onChange={(e) => setActivityRegionId(e.target.value)}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formFacility" className="mb-3">
+              <Form.Label>체육시설</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="체육시설 ID"
+                className="custom-input"
+                value={facilityId}
+                onChange={(e) => setFacilityId(e.target.value)}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formExercise" className="mb-3">
+              <Form.Label>운동종목</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="운동종목 ID"
+                className="custom-input"
+                value={exerciseId}
+                onChange={(e) => setExerciseId(e.target.value)}
+                required
               />
             </Form.Group>
 
             <Form.Group controlId="formDate" className="mb-3">
               <Form.Label>날짜</Form.Label>
-              <Form.Control type="date" className="custom-input" />
-            </Form.Group>
-
-            <Form.Group controlId="formSports" className="mb-3">
-              <Form.Label>운동 종목</Form.Label>
-              <ButtonGroup
-                toggle
-                className="d-flex flex-wrap justify-content-center"
-              >
-                {sports.map((sport, idx) => (
-                  <ToggleButton
-                    key={idx}
-                    type="checkbox"
-                    variant="outline-primary"
-                    className={`sport-button ${
-                      sportValue.includes(sport) ? "active" : ""
-                    }`}
-                    value={sport}
-                    onClick={() =>
-                      handleToggle(sport, setSportValue, sportValue)
-                    }
-                  >
-                    {sport}
-                  </ToggleButton>
-                ))}
-              </ButtonGroup>
-            </Form.Group>
-
-            <Form.Group controlId="formLevel" className="mb-3">
-              <Form.Label>참가자 수준</Form.Label>
-              <ButtonGroup toggle className="d-flex">
-                {levels.map((level, idx) => (
-                  <ToggleButton
-                    key={idx}
-                    type="radio"
-                    variant="outline-primary"
-                    className={`level-button ${
-                      levelValue === level ? "active" : ""
-                    }`}
-                    name="level"
-                    value={level}
-                    onClick={() => setLevelValue(level)}
-                  >
-                    {level}
-                  </ToggleButton>
-                ))}
-              </ButtonGroup>
-            </Form.Group>
-
-            <Form.Group controlId="formGender" className="mb-3">
-              <Form.Label>성별</Form.Label>
-              <ButtonGroup toggle className="d-flex">
-                {genders.map((gender, idx) => (
-                  <ToggleButton
-                    key={idx}
-                    type="radio"
-                    variant="outline-primary"
-                    className={`gender-button ${
-                      genderValue === gender ? "active" : ""
-                    }`}
-                    name="gender"
-                    value={gender}
-                    onClick={() => setGenderValue(gender)}
-                  >
-                    {gender}
-                  </ToggleButton>
-                ))}
-              </ButtonGroup>
-            </Form.Group>
-
-            <Form.Group controlId="formCapacity" className="mb-3">
-              <Form.Label>정원</Form.Label>
               <Form.Control
-                type="range"
-                min="0"
-                max="100"
+                type="date"
+                className="custom-input"
+                value={socialringDate}
+                onChange={(e) => setSocialringDate(e.target.value)}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formRecruits" className="mb-3">
+              <Form.Label>모집인원</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="모집인원"
+                className="custom-input"
                 value={capacity}
                 onChange={(e) => setCapacity(e.target.value)}
-                className="custom-range" // 커스텀 클래스 추가
+                required
               />
-              <div className="text-center mt-2">{capacity}</div>{" "}
-              {/* 정원 값 표시 */}
             </Form.Group>
 
-            <Form.Group controlId="formPrice" className="mb-3">
-              <Form.Label>가격</Form.Label>
-              <ButtonGroup toggle className="d-flex">
-                {prices.map((price, idx) => (
-                  <ToggleButton
-                    key={idx}
-                    type="radio"
-                    variant="outline-primary"
-                    className={`price-button ${
-                      priceValue === price ? "active" : ""
-                    }`}
-                    name="price"
-                    value={price}
-                    onClick={() => setPriceValue(price)}
-                  >
-                    {price}
-                  </ToggleButton>
-                ))}
-              </ButtonGroup>
+            <Form.Group controlId="formCost" className="mb-3">
+              <Form.Label>참가비용</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="참가비용"
+                className="custom-input"
+                value={socialringCost}
+                onChange={(e) => setSocialringCost(e.target.value)}
+                required
+              />
             </Form.Group>
 
             <Form.Group controlId="formDescription" className="mb-3">
@@ -186,6 +242,21 @@ const Social = () => {
                 rows={3}
                 placeholder="소개글을 입력하세요"
                 className="custom-input"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formCommentSimple" className="mb-3">
+              <Form.Label>한줄 설명</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="한줄 설명"
+                className="custom-input"
+                value={commentSimple}
+                onChange={(e) => setCommentSimple(e.target.value)}
+                required
               />
             </Form.Group>
 

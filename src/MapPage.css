@@ -3,42 +3,6 @@
   text-align: center;
 }
 
-.header {
-  background-color: #ffeb3b;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header .logo {
-  font-size: 24px;
-  font-weight: bold;
-  margin-right: 20px;
-}
-
-.header .nav {
-  display: flex;
-}
-
-.header .nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
-}
-
-.header .nav ul li {
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.header .search-icon {
-  font-size: 24px;
-  cursor: pointer;
-}
-
 .map-container {
   margin-top: 20px;
 }
@@ -49,7 +13,7 @@
   align-items: center;
   gap: 20px;
   padding: 20px;
-  border: 2px solid #ffeb3b;
+  border: 2px solid #f8e998;
   border-radius: 10px;
   margin-bottom: 20px;
 }

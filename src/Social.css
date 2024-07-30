@@ -1,10 +1,11 @@
 .main-container {
   background-color: #fdf7e3;
-  padding: 20px;
+  padding: 40px;
 }
 
 .form-container {
   background-color: white;
+  width: 53% !important;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -33,6 +34,21 @@
   border-radius: 8px !important;
 }
 
+.sport-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.sport-options button {
+  flex: 1 1 calc(33.333% - 10px);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+
 .sport-button.active,
 .level-button.active,
 .gender-button.active,
@@ -52,4 +68,35 @@
 
 .text-center {
   margin-top: 20px;
+}
+
+.img-preview-container {
+  position: relative;
+  display: inline-block;
+}
+
+.img-preview {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.img-remove-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(255, 0, 0, 0.7);
+  border: none;
+  color: white;
+  font-size: 20px;
+  line-height: 1;
+  padding: 2px 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.img-remove-button:hover {
+  background: rgba(255, 0, 0, 1);
 }

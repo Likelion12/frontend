@@ -1,93 +1,46 @@
-.signup-container {
-  width: 300px;
-  padding: 20px;
-  background-color: white;
-  border: 2.5px solid #fbeda2;
+.sign-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff3cd;
+}
+
+.sign-box {
+  background: #ffffff;
+  border: 1px solid #dcdcdc;
+  margin-top: -10%;
+  padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin: auto;
-  margin-top: 150px;
 }
 
-.signup-container h2 {
-  margin: 0;
-  font-size: 24px;
+.sign-title {
+  font-size: 2em;
+  font-weight: bold;
   color: #333;
+  margin-bottom: 10px;
 }
 
-.signup-container p {
-  font-size: 14px;
+.sign-subtitle {
+  font-size: 1em;
   color: #666;
   margin-bottom: 20px;
 }
 
-.signup-input {
-  margin-bottom: 15px;
-  text-align: left;
-}
-
-.signup-input label {
-  display: block;
-  font-size: 12px;
-  color: #888;
-  margin-bottom: 5px;
-}
-
-.signup-input input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-
-.gender-selection {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
-.gender-selection label {
-  font-size: 14px;
-}
-
-.categories {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.category-button {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  background-color: white;
-  color: #333;
-}
-
-.category-button.selected {
-  background-color: #fbeda2;
-  color: black;
-}
-
-.signup-btn {
-  width: 100%;
-  padding: 10px;
+.kakao-sign-btn {
+  background-color: #fee500;
   border: none;
-  border-radius: 5px;
-  font-size: 14px;
+  color: #3c1e1e;
+  padding: 15px 20px;
+  font-size: 1em;
+  font-weight: bold;
   cursor: pointer;
-  margin-top: 10px;
-  background-color: #fbeda2;
-  color: black;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
-.forgot-password {
-  font-size: 12px;
-  color: #888;
-  margin-top: 10px;
+.kakao-sign-btn:hover {
+  background-color: #ffd700;
 }
