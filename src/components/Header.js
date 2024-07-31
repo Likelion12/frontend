@@ -7,30 +7,29 @@ const Header = () => {
     <header className="header">
       <div className="logo">DoGether!</div>
       <nav>
-        <ul class="nav justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#!">
+        <ul className="nav justify-content-center">
+          <li className="nav-item">
+            <Link className="nav-link active" aria-current="page" to="/">
               소셜링
-            </a>
+            </Link>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#!">
+          <li className="nav-item">
+            <Link className="nav-link" to="/crew">
               크루
-            </a>
+            </Link>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#!">
+          <li className="nav-item">
+            <Link className="nav-link" to="/place">
               플레이스
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/map">
               지도
             </Link>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#!">
+          <li className="nav-item">
+            <a className="nav-link" href="#!">
               마이페이지
             </a>
           </li>
@@ -42,7 +41,7 @@ const Header = () => {
           to="/login"
           style={{ textDecoration: "none" }}
         >
-          <img src="./login_icon.png"></img>
+          <img src="./login_icon.png" alt="Login Icon"></img>
         </Link>
       </div>
     </header>

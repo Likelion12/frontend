@@ -7,7 +7,7 @@ body {
 
 .app {
   text-align: center;
-}
+} /*기본 정렬 센터*/
 
 .header {
   display: flex;
@@ -16,59 +16,65 @@ body {
   background-color: #f8e998;
 }
 
-.logo {
-  font-size: 24px;
+.app-content {
+  padding-top: 10px;
+} /*헤더 상단 고정*/
+
+.header .logo {
+  font-size: 34px;
   font-weight: bold;
-}
+  margin-right: 20px;
+  margin-top: -3px;
+} /*DoGether 텍스트로고 설정*/
 
 .header nav ul {
   display: flex;
   list-style: none;
   padding: 0;
-}
+} /*헤더 글씨*/
 
 .header nav ul li {
-  margin: 0 10px;
-}
+  margin: 0 20px;
+} /*헤더 글씨 너비*/
 
 .search-bar {
   display: flex;
   justify-content: center;
   padding: 20px;
+  margin-top: 20px;
 }
 
 .search-bar input,
 .search-bar button {
-  margin: 0 5px;
+  margin: 0 8px;
   padding: 10px;
+  border-radius: 8px;
+  border: 2.5px solid #ffeb3b;
 }
 
 .main-content {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
-}
-
-.registration-form {
-  width: 20%;
-  padding: 20px;
-  background-color: #f1f1f1;
-}
-
-.registration-form h2 {
-  font-size: 18px;
-}
+  padding: 50px;
+} /*홈 화면 정렬*/
 
 .registration-form form div {
-  margin-bottom: 10px;
-}
+  margin-bottom: 8px;
+  text-align: center;
+} /*필터링 항목들*/
 
-.registration-form form label {
-  display: block;
-}
+.registration-form {
+  width: 18%;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 2.5px solid #ffeb3b;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+} /*필터링 박스*/
 
 .card-list {
   display: grid;
+  align-self: flex-start;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   width: 75%;
@@ -93,42 +99,5 @@ body {
 .card-content .tag,
 .card-content .date {
   font-size: 12px;
-  color: #777;
-}
-
-.detail {
-  padding: 20px;
-}
-
-.detail img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-}
-
-.member-info {
-  background-color: #f1f1f1;
-  padding: 10px;
-  margin: 20px 0;
-}
-
-.member-info .members {
-  display: flex;
-  justify-content: space-between;
-}
-
-.related-events {
-  margin-top: 20px;
-}
-
-.related-events .card-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
-.related-events .card {
-  background-color: #fff;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #000000;
 }

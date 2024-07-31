@@ -1,12 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Calendar from "react-calendar";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "react-calendar/dist/Calendar.css";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import members from "./membersData"; // 멤버 데이터 가져오기
-import "./Detail.css";
+import "./CrewDetail.css";
 
 // Marker icon 설정
 delete L.Icon.Default.prototype._getIconUrl;
@@ -17,7 +16,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
 });
 
-const Detail = () => {
+const CrewDetail = () => {
   return (
     <div className="detail-page">
       <div className="content-container">
@@ -37,11 +36,11 @@ const Detail = () => {
             <p>날짜: 2024.07.21(일)</p>
             <p>장소: 뚝섬한강공원</p>
             <Calendar className="calendar" />
-            <div className="map-container">
+            <div className="crew-map-container">
               <MapContainer
                 center={[37.566535, 126.97796919999996]}
                 zoom={13}
-                className="map"
+                className="crew-map"
               >
                 <TileLayer
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -101,4 +100,4 @@ const Detail = () => {
   );
 };
 
-export default Detail;
+export default CrewDetail;
