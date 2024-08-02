@@ -16,7 +16,7 @@ const MapPage = () => {
       try {
         const response = await axios.get("/main", {
           headers: {
-            Authorization: `Bearer YOUR_AUTHORIZATION_TOKEN`, // Replace with your token
+            Authorization: `Bearer YOUR_AUTHORIZATION_TOKEN`,
           },
         });
         setDeadlineImminent(response.data.deadline_imminent);
