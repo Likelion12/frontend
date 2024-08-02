@@ -21,6 +21,7 @@ const Social = () => {
   const [comment, setComment] = useState("");
   const [commentSimple, setCommentSimple] = useState("");
 
+  // Define the sports array
   const sports = [
     { id: 1, name: "축구" },
     { id: 2, name: "농구" },
@@ -33,6 +34,8 @@ const Social = () => {
     { id: 9, name: "골프" },
     { id: 10, name: "클라이밍" },
   ];
+
+  // Define levels and genders arrays
   const levels = ["입문", "초급", "중급", "고급"];
   const genders = ["상관없음", "남성", "여성"];
   const prices = ["무료", "유료"];
@@ -83,12 +86,16 @@ const Social = () => {
     formData.append("level", levelValue);
 
     try {
-      const response = await axios.post("/socialring", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: "Bearer YOUR_ACCESS_TOKEN", // 여기에 실제 토큰을 넣으세요
-        },
-      });
+      const response = await axios.post(
+        "http://43.202.94.241:8080/socialring",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`, // 로컬 스토리지에서 토큰 가져오기
+          },
+        }
+      );
 
       if (response.data.code === 1000) {
         alert("소셜링 등록에 성공하였습니다.");
@@ -113,7 +120,7 @@ const Social = () => {
             <Form.Group controlId="formImage" className="text-center mb-3">
               <Form.Label className="d-block">사진 추가</Form.Label>
               <input
-                type="String"
+                type="file"
                 accept="image/*"
                 style={{ display: "none" }}
                 id="fileInput"
@@ -145,10 +152,10 @@ const Social = () => {
             </Form.Group>
 
             <Form.Group controlId="formTitle" className="mb-3">
-              <Form.Label>소셜링 이름</Form.Label>
+              <Form.Label>소셜링 명</Form.Label>
               <Form.Control
-                type="String"
-                placeholder="소셜링 이름"
+                type="text"
+                placeholder="소셜링 명"
                 className="custom-input"
                 value={socialringName}
                 onChange={(e) => setSocialringName(e.target.value)}
@@ -159,8 +166,8 @@ const Social = () => {
             <Form.Group controlId="formLocation" className="mb-3">
               <Form.Label>활동지역</Form.Label>
               <Form.Control
-                type="long"
-                placeholder="활동지역"
+                type="number"
+                placeholder="활동지역 ID"
                 className="custom-input"
                 value={activityRegionId}
                 onChange={(e) => setActivityRegionId(e.target.value)}
@@ -171,8 +178,8 @@ const Social = () => {
             <Form.Group controlId="formFacility" className="mb-3">
               <Form.Label>체육시설</Form.Label>
               <Form.Control
-                type="long"
-                placeholder="체육시설"
+                type="number"
+                placeholder="체육시설 ID"
                 className="custom-input"
                 value={facilityId}
                 onChange={(e) => setFacilityId(e.target.value)}
@@ -192,7 +199,6 @@ const Social = () => {
                         : "outline-primary"
                     }
                     className="m-1 sport-button"
-                    type="long"
                     onClick={() =>
                       handleToggle(sport.id, setSportValue, sportValue)
                     }
@@ -206,7 +212,7 @@ const Social = () => {
             <Form.Group controlId="formDate" className="mb-3">
               <Form.Label>날짜</Form.Label>
               <Form.Control
-                type="LocalDate"
+                type="date"
                 className="custom-input"
                 value={socialringDate}
                 onChange={(e) => setSocialringDate(e.target.value)}
@@ -214,41 +220,10 @@ const Social = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="formGender" className="mb-3">
-              <Form.Label>성별</Form.Label>
-              <Form.Control
-                as="select"
-                value={genderValue}
-                onChange={(e) => setGenderValue(e.target.value)}
-                required
-              >
-                <option value="">성별을 선택하세요</option>
-                <option value="M">남성</option>
-                <option value="F">여성</option>
-                <option value="N">상관없음</option>
-              </Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="formLevel" className="mb-3">
-              <Form.Label>레벨</Form.Label>
-              <Form.Control
-                as="select"
-                value={levelValue}
-                onChange={(e) => setLevelValue(e.target.value)}
-                required
-              >
-                <option value="">레벨을 선택하세요</option>
-                <option value="B">입문</option>
-                <option value="I">초급</option>
-                <option value="M">중급</option>
-                <option value="A">고급</option>
-              </Form.Control>
-            </Form.Group>
-
             <Form.Group controlId="formRecruits" className="mb-3">
               <Form.Label>모집인원</Form.Label>
               <Form.Control
-                type="int"
+                type="number"
                 placeholder="모집인원"
                 className="custom-input"
                 value={capacity}
@@ -260,7 +235,7 @@ const Social = () => {
             <Form.Group controlId="formCost" className="mb-3">
               <Form.Label>참가비용</Form.Label>
               <Form.Control
-                type="int"
+                type="number"
                 placeholder="참가비용"
                 className="custom-input"
                 value={socialringCost}
@@ -273,7 +248,6 @@ const Social = () => {
               <Form.Label>소개글</Form.Label>
               <Form.Control
                 as="textarea"
-                type="String"
                 rows={3}
                 placeholder="소개글을 입력하세요"
                 className="custom-input"
@@ -286,7 +260,7 @@ const Social = () => {
             <Form.Group controlId="formCommentSimple" className="mb-3">
               <Form.Label>한줄 설명</Form.Label>
               <Form.Control
-                type="String"
+                type="text"
                 placeholder="한줄 설명"
                 className="custom-input"
                 value={commentSimple}

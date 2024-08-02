@@ -1,8 +1,14 @@
 {
-  "code": 1000,
-  "message": "요청에 성공하였습니다.",
-  "result": {
-    "memberId": 3,
-    "accessToken": "eyJhbGciOiJIUzI1NiJ9"
-  }
+  "socialringName": "건국소셜링",
+  "socialringImg": "이미지url",
+  "activityRegionId": 1,
+  "facilityId": 1,
+  "exerciseId": 1,
+  "totalRecruits": 10,
+  "socialringDate": "2024-07-30",
+  "socialringCost": 1000,
+  "comment": "소셜링설명",
+  "commentSimple": "소셜링한줄설명",
+  "gender": "F",
+  "level": "S"
 }
