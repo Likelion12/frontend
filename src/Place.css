@@ -3,6 +3,8 @@
   width: 90%;
   margin: 0 auto;
   padding-top: 20px;
+  padding-left: 20px; /* 왼쪽 여백 추가 */
+  padding-right: 20px; /* 오른쪽 여백 추가 */
 }
 
 .place-title {
@@ -19,7 +21,8 @@
 }
 
 .intro-image img {
-  width: 1235px;
+  width: 100%;
+  max-width: 1235px;
   height: 505px;
   border-radius: 4px;
 }
@@ -50,7 +53,8 @@
 }
 
 .map-placeholder {
-  width: 1235px;
+  width: 100%;
+  max-width: 1235px;
   height: 390px;
   background: #ffed92;
   display: flex;

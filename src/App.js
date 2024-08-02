@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home.js";
 import Detail from "./Detail.js";
 import CrewDetail from "./CrewDetail.js";
+import Crew from "./Crew.js";
 import Login from "./Login.js";
 import Social from "./Social.js";
 import Header from "./components/Header.js";
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/map" element={<MapPage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/place" element={<Place />} />
+          <Route path="/crew" component={Crew} exact />
         </Routes>
       </div>
     </Router>

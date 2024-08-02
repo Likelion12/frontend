@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  Button,
-  ButtonGroup,
-  ToggleButton,
-} from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./Social.css";
 import axios from "axios";
 
@@ -17,10 +9,9 @@ const Social = () => {
   const [genderValue, setGenderValue] = useState("");
   const [priceValue, setPriceValue] = useState("");
   const [capacity, setCapacity] = useState(0);
-  const [image, setImage] = useState(null); // 이미지 상태 추가
-  const [imagePreview, setImagePreview] = useState(null); // 이미지 미리보기 상태 추가
+  const [image, setImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
 
-  // 추가된 상태 변수
   const [socialringName, setSocialringName] = useState("");
   const [activityRegionId, setActivityRegionId] = useState("");
   const [facilityId, setFacilityId] = useState("");
@@ -31,16 +22,16 @@ const Social = () => {
   const [commentSimple, setCommentSimple] = useState("");
 
   const sports = [
-    "축구",
-    "농구",
-    "런닝",
-    "등산",
-    "야구",
-    "테니스",
-    "배구",
-    "배드민턴",
-    "골프",
-    "클라이밍",
+    { id: 1, name: "축구" },
+    { id: 2, name: "농구" },
+    { id: 3, name: "런닝" },
+    { id: 4, name: "등산" },
+    { id: 5, name: "야구" },
+    { id: 6, name: "테니스" },
+    { id: 7, name: "배구" },
+    { id: 8, name: "배드민턴" },
+    { id: 9, name: "골프" },
+    { id: 10, name: "클라이밍" },
   ];
   const levels = ["입문", "초급", "중급", "고급"];
   const genders = ["상관없음", "남성", "여성"];
@@ -58,7 +49,6 @@ const Social = () => {
     const file = event.target.files[0];
     setImage(file);
 
-    // 미리보기 설정
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -89,14 +79,20 @@ const Social = () => {
     formData.append("socialringCost", socialringCost);
     formData.append("comment", comment);
     formData.append("commentSimple", commentSimple);
+    formData.append("gender", genderValue);
+    formData.append("level", levelValue);
 
     try {
-      const response = await axios.post("/your-api-endpoint", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: "Bearer YOUR_ACCESS_TOKEN", // 여기에 실제 토큰을 넣으세요
-        },
-      });
+      const response = await axios.post(
+        "http://43.202.94.241:8080/socialring",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`, // 로컬 스토리지에서 토큰 가져오기
+          },
+        }
+      );
 
       if (response.data.code === 1000) {
         alert("소셜링 등록에 성공하였습니다.");
@@ -191,18 +187,20 @@ const Social = () => {
             <Form.Group controlId="formExercise" className="mb-3">
               <Form.Label>운동종목</Form.Label>
               <div className="d-flex flex-wrap">
-                {sports.map((sport, index) => (
+                {sports.map((sport) => (
                   <Button
-                    key={sport}
+                    key={sport.id}
                     variant={
-                      sportValue.includes(sport) ? "primary" : "outline-primary"
+                      sportValue.includes(sport.id)
+                        ? "primary"
+                        : "outline-primary"
                     }
                     className="m-1 sport-button"
                     onClick={() =>
-                      handleToggle(sport, setSportValue, sportValue)
+                      handleToggle(sport.id, setSportValue, sportValue)
                     }
                   >
-                    {sport}
+                    {sport.name}
                   </Button>
                 ))}
               </div>
@@ -266,6 +264,42 @@ const Social = () => {
                 onChange={(e) => setCommentSimple(e.target.value)}
                 required
               />
+            </Form.Group>
+
+            <Form.Group controlId="formGender" className="mb-3">
+              <Form.Label>성별</Form.Label>
+              <div className="d-flex flex-wrap">
+                {genders.map((gender) => (
+                  <Button
+                    key={gender}
+                    variant={
+                      genderValue === gender ? "primary" : "outline-primary"
+                    }
+                    className="m-1 gender-button"
+                    onClick={() => setGenderValue(gender)}
+                  >
+                    {gender}
+                  </Button>
+                ))}
+              </div>
+            </Form.Group>
+
+            <Form.Group controlId="formLevel" className="mb-3">
+              <Form.Label>참가자 수준</Form.Label>
+              <div className="d-flex flex-wrap">
+                {levels.map((level) => (
+                  <Button
+                    key={level}
+                    variant={
+                      levelValue === level ? "primary" : "outline-primary"
+                    }
+                    className="m-1 level-button"
+                    onClick={() => setLevelValue(level)}
+                  >
+                    {level}
+                  </Button>
+                ))}
+              </div>
             </Form.Group>
 
             <div className="text-center">
