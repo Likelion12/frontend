@@ -1,12 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
 import "./MapPage.css";
 
 const MapPage = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const [deadlineImminent, setDeadlineImminent] = useState([]);
+  const [hotCrew, setHotCrew] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/main", {
+          headers: {
+            Authorization: `Bearer YOUR_AUTHORIZATION_TOKEN`, // Replace with your token
+          },
+        });
+        setDeadlineImminent(response.data.deadline_imminent);
+        setHotCrew(response.data.hot_crew);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="map-page">
@@ -44,37 +65,39 @@ const MapPage = () => {
         <div className="popular-list">
           <h2>마감 임박</h2>
           <div className="cards">
-            {Array(6)
-              .fill(0)
-              .map((_, index) => (
-                <div key={index} className="card">
-                  <img
-                    src="https://via.placeholder.com/261x261"
-                    alt="placeholder"
-                  />
-                  <div className="card-content">
-                    <span>중랑천 런닝 3km</span>
-                    <span>2024.07.21(일)</span>
-                  </div>
+            {deadlineImminent.map((event, index) => (
+              <div key={index} className="card">
+                <img
+                  src={
+                    event.socialring_img ||
+                    "https://via.placeholder.com/261x261"
+                  }
+                  alt={event.socialring_name}
+                />
+                <div className="card-content">
+                  <span>{event.socialring_name}</span>
+                  <span>
+                    {new Date(event.socialring_date).toLocaleDateString()}
+                  </span>
+                  <p>{event.comment_simple}</p>
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
           <h2>인기 크루</h2>
           <div className="cards">
-            {Array(6)
-              .fill(0)
-              .map((_, index) => (
-                <div key={index} className="card">
-                  <img
-                    src="https://via.placeholder.com/261x261"
-                    alt="placeholder"
-                  />
-                  <div className="card-content">
-                    <span>중랑천 런닝 3km</span>
-                    <span>2024.07.21(일)</span>
-                  </div>
+            {hotCrew.map((crew, index) => (
+              <div key={index} className="card">
+                <img
+                  src={crew.crew_img || "https://via.placeholder.com/261x261"}
+                  alt={crew.crew_name}
+                />
+                <div className="card-content">
+                  <span>{crew.crew_name}</span>
+                  <p>{crew.comment_simple}</p>
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
         </div>
       </div>
