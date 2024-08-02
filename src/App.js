@@ -7,6 +7,7 @@ import Crew from "./Crew.js";
 import Login from "./Login.js";
 import Social from "./Social.js";
 import Header from "./components/Header.js";
+import CrewRegistration from "./CrewRegistration.js";
 import Signup from "./Signup.js";
 import MapPage from "./MapPage.js";
 import Place from "./Place.js";
@@ -27,7 +28,7 @@ const App = () => {
           <Route path="/map" element={<MapPage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/place" element={<Place />} />
-          <Route path="/crew" component={Crew} exact />
+          <Route path="/crew-registration" element={<CrewRegistration />} />
         </Routes>
       </div>
     </Router>

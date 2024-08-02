@@ -1,0 +1,22 @@
+.crew-filter {
+  padding: 20px;
+  border: 1px solid #ffed92;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.crew-filter .form-group {
+  margin-bottom: 15px;
+}
+
+.filter-button {
+  background-color: #ffed92;
+  border: none;
+  color: black;
+  font-weight: bold;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+}

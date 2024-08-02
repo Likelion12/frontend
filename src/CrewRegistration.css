@@ -1,0 +1,108 @@
+/* CrewRegistration.css */
+.crew-registration {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+}
+
+.content {
+  padding: 20px;
+}
+
+.content h2 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.form-section {
+  display: flex;
+  gap: 20px;
+}
+
+.form-left {
+  flex: 1;
+}
+
+.image-upload {
+  width: 261px;
+  height: 261px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.image-placeholder {
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  font-size: 24px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.form-right {
+  flex: 2;
+}
+
+.tags,
+.levels,
+.genders {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.tag,
+.level,
+.gender {
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.selected {
+  background: #ffed92;
+}
+
+.capacity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.slider {
+  width: 100%;
+}
+
+.textarea {
+  width: 100%;
+  padding: 20px;
+  font-size: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.submit-button {
+  background: #ffed92;
+  border: none;
+  padding: 20px 40px;
+  font-size: 32px;
+  cursor: pointer;
+  border-radius: 15px;
+}

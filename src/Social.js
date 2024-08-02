@@ -74,12 +74,12 @@ const Social = () => {
     const formData = new FormData();
     formData.append("socialringName", socialringName);
     formData.append("socialringImg", image);
-    formData.append("activityRegionId", activityRegionId);
-    formData.append("facilityId", facilityId);
-    formData.append("exerciseId", exerciseId);
-    formData.append("totalRecruits", capacity);
+    formData.append("activityRegionId", parseInt(activityRegionId));
+    formData.append("facilityId", parseInt(facilityId));
+    formData.append("exerciseId", parseInt(exerciseId));
+    formData.append("totalRecruits", parseInt(capacity));
     formData.append("socialringDate", socialringDate);
-    formData.append("socialringCost", socialringCost);
+    formData.append("socialringCost", parseInt(socialringCost));
     formData.append("comment", comment);
     formData.append("commentSimple", commentSimple);
     formData.append("gender", genderValue);
@@ -166,7 +166,7 @@ const Social = () => {
             <Form.Group controlId="formLocation" className="mb-3">
               <Form.Label>활동지역</Form.Label>
               <Form.Control
-                type="number"
+                type="text"
                 placeholder="활동지역 ID"
                 className="custom-input"
                 value={activityRegionId}
@@ -178,7 +178,7 @@ const Social = () => {
             <Form.Group controlId="formFacility" className="mb-3">
               <Form.Label>체육시설</Form.Label>
               <Form.Control
-                type="number"
+                type="text"
                 placeholder="체육시설 ID"
                 className="custom-input"
                 value={facilityId}
@@ -212,7 +212,7 @@ const Social = () => {
             <Form.Group controlId="formDate" className="mb-3">
               <Form.Label>날짜</Form.Label>
               <Form.Control
-                type="date"
+                type="LocalDate"
                 className="custom-input"
                 value={socialringDate}
                 onChange={(e) => setSocialringDate(e.target.value)}
