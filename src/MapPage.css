@@ -1,6 +1,7 @@
 .map-page {
-  width: 100%;
-  padding: 0 20px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px; /* 상하좌우 padding 추가 */
 }
 
 .header {
@@ -42,6 +43,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  padding: 0 20px; /* 좌우 padding 추가 */
 }
 
 .filters {
@@ -88,6 +91,7 @@
   display: flex;
   gap: 20px;
   overflow-x: auto;
+  padding: 0 20px; /* 좌우 padding 추가 */
 }
 
 .card {

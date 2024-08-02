@@ -28,11 +28,6 @@ const Header = () => {
               지도
             </Link>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#!">
-              마이페이지
-            </a>
-          </li>
         </ul>
       </nav>
       <div className="login-icon">
