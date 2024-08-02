@@ -3,92 +3,95 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #fff4d7;
+  background-color: #f9f9f9;
 }
 
 .sign-box {
-  background: #ffffff;
-  border: 1px solid #dcdcdc;
-  margin-top: -10%;
+  background-color: white;
+  border: 2px solid #007bff;
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 0px;
+  width: 400px;
   text-align: center;
 }
 
 .sign-title {
-  font-size: 2em;
-  font-weight: bold;
-  color: #333;
+  font-size: 24px;
   margin-bottom: 10px;
 }
 
 .sign-subtitle {
-  font-size: 1em;
-  color: #666;
+  font-size: 16px;
   margin-bottom: 20px;
 }
 
-.sign-input {
-  margin-bottom: 15px;
+.kakao-sign-btn {
+  background-color: #fee500;
+  border: none;
+  color: #3c1e1e;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.kakao-sign-btn:hover {
+  background-color: #ffd700;
+}
+
+form {
   text-align: left;
 }
 
-.sign-input label {
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
   display: block;
-  font-size: 12px;
-  color: #888;
   margin-bottom: 5px;
 }
 
-.sign-input select {
+.input-group input,
+.input-group select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-
-.sports-selection {
-  margin-bottom: 15px;
 }
 
 .sports-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
 }
 
-.sport-btn {
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
+.sports-buttons button {
   background-color: white;
-  color: #333;
-}
-
-.sport-btn.selected {
-  background-color: #ffeb3b;
-  border-color: #ffeb3b;
-}
-
-.kakao-sign-btn {
-  width: 100%;
+  border: 1px solid #ccc;
   padding: 10px;
-  background-color: #fee500;
-  border: none;
-  color: #3c1e1e;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
+  margin: 5px;
   border-radius: 5px;
-  margin-top: 20px;
-  transition: background-color 0.3s;
+  cursor: pointer;
 }
 
-.kakao-sign-btn:hover {
-  background-color: #ffd700;
+.sports-buttons button:hover {
+  background-color: #f0f0f0;
+}
+
+button[type="submit"] {
+  background-color: #ffc107;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background-color: #e0a800;
 }
