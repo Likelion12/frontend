@@ -5,7 +5,11 @@ import "../Home.css";
 const Header = () => {
   return (
     <header className="header">
-      <div className="logo">DoGether!</div>
+      <div className="logo">
+        <Link className="nav-link" to="/Main">
+          DoGether!
+        </Link>
+      </div>
       <nav>
         <ul className="nav justify-content-center">
           <li className="nav-item">

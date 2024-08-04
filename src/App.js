@@ -1,4 +1,5 @@
-import React from "react";
+// App.js
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home.js";
 import Detail from "./Detail.js";
@@ -11,10 +12,13 @@ import CrewRegistration from "./CrewRegistration.js";
 import Signup from "./Signup.js";
 import MapPage from "./MapPage.js";
 import Place from "./Place.js";
+import Main from "./Main.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 const App = () => {
+  const [token, setToken] = useState("");
+
   return (
     <Router>
       <Header />
@@ -24,10 +28,11 @@ const App = () => {
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/Social" element={<Social />} />
           <Route path="/crew" element={<CrewDetail />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login setToken={setToken} />} />
           <Route path="/map" element={<MapPage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/place" element={<Place />} />
+          <Route path="/main" element={<Main token={token} />} />
           <Route path="/crew-registration" element={<CrewRegistration />} />
         </Routes>
       </div>
