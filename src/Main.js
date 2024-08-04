@@ -1,6 +1,6 @@
-// Main.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom"; // Link를 import
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
@@ -48,28 +48,32 @@ const Main = ({ token }) => {
     return items.map((item, index) => (
       <div className="col-md-4 mb-3" key={index}>
         <div className="card">
-          <img
-            src={item[`${type}_img`] || "basic.jpg"}
-            className="card-img-top"
-            alt={item[`${type}_name`]}
-          />
-          <div className="card-body">
-            <h5 className="card-title">{item[`${type}_name`]}</h5>
-            <p className="card-text">{item.comment_simple}</p>
-            {type === "socialring" && (
-              <>
-                <p className="card-text">일정: {item.socialring_date}</p>
-                <p className="card-text">모집 인원: {item.total_recruits}</p>
-                <p className="card-text">참가비: {item.socialring_cost}원</p>
-              </>
-            )}
-            {type === "crew" && (
-              <>
-                <p className="card-text">모집 인원: {item.total_recruits}</p>
-                <p className="card-text">참가비: {item.crew_cost}원</p>
-              </>
-            )}
-          </div>
+          {/* Link로 Detail 페이지로 이동 */}
+          <Link to="/detail">
+            <img
+              src={item[`${type}_img`] || "basic.jpg"}
+              className="card-img-top"
+              alt={item[`${type}_name`]}
+            />
+            <div className="card-body">
+              <h5 className="card-title">{item[`${type}_name`]}</h5>
+              <p className="card-text">{item.comment_simple}</p>
+              {type === "socialring" && (
+                <>
+                  <p className="card-text">일정: {item.socialring_date}</p>
+                  <p className="card-text">모집 인원: {item.total_recruits}</p>
+                  <p className="card-text">참가비: {item.socialring_cost}원</p>
+                </>
+              )}
+              {type === "crew" && (
+                <>
+                  <p className="card-text">모집 인원: {item.total_recruits}</p>
+                  <p className="card-text">참가비: {item.crew_cost}원</p>
+                </>
+              )}
+            </div>
+          </Link>
+          {/* Link로 Detail 페이지로 이동 */}
         </div>
       </div>
     ));

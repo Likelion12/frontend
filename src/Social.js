@@ -212,7 +212,7 @@ const Social = () => {
             <Form.Group controlId="formDate" className="mb-3">
               <Form.Label>날짜</Form.Label>
               <Form.Control
-                type="LocalDate"
+                type="date"
                 className="custom-input"
                 value={socialringDate}
                 onChange={(e) => setSocialringDate(e.target.value)}

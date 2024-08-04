@@ -4,14 +4,6 @@ import "./CrewRegistration.css";
 const CrewRegistration = () => {
   return (
     <div className="crew-registration">
-      <div className="header">
-        <h1>DoGether!</h1>
-        <nav>
-          <a href="/">소셜링</a>
-          <a href="/crew-registration">크루</a>
-          <a href="/places">플레이스</a>
-        </nav>
-      </div>
       <div className="content">
         <h2>크루 등록</h2>
         <div className="form-section">
