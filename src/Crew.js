@@ -1,45 +1,96 @@
-import React from "react";
-import { Link } from "react-router-dom"; // Link 임포트
+// Crew.js
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./Crew.css";
 
-const Crew = () => {
-  const crewList = [
-    {
-      id: 1,
-      name: "서울숲 담비 클라이밍",
-      description: "매주 수요일 활동하는 2년차 클린이 모임",
-      location: "광진구",
-      level: "초급",
-      category: "런닝",
-    },
-    {
-      id: 2,
-      name: "한강 주말 러닝",
-      description: "매주 주말 활동하는 러닝 모임",
-      location: "강남구",
-      level: "중급",
-      category: "러닝",
-    },
-    // 더 많은 크루 데이터를 추가할 수 있습니다.
-  ];
+const Crew = ({ token }) => {
+  const [data, setData] = useState(null);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const crewId = queryParams.get("crewId");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/crew?crewId=${crewId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setData(response.data.result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    if (token) {
+      fetchData();
+    }
+  }, [token, crewId]);
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div className="crew-page">
-      <div className="crew-page-header">
-        <h1>크루 페이지</h1>
-        <p>20개의 크루가 검색되었습니다.</p>
+    <div className="container">
+      <h2>{data.crewName}</h2>
+      <img
+        src={data.crewImg || "basic.jpg"}
+        alt={data.crewName}
+        className="img-fluid main-image"
+      />
+      <div className="event-details">
+        <div className="tags">
+          <span className="tag">{data.exerciseName}</span>
+          <span className="tag">{data.level}</span>
+          <span className="tag">{data.gender}</span>
+        </div>
+        <p>활동 지역: {data.activityRegionName}</p>
+        <p>모집 인원: {data.totalRecruits}</p>
+        <p>참가비: {data.crewCost}원</p>
       </div>
-      <div className="crew-page-content">
-        {crewList.map((crew) => (
-          <div key={crew.id} className="crew-card">
-            <h2>{crew.name}</h2>
-            <p>{crew.description}</p>
-            <p>지역: {crew.location}</p>
-            <p>수준: {crew.level}</p>
-            <p>카테고리: {crew.category}</p>
-            <Link to={`/crew/${crew.id}`}>자세히 보기</Link>
-          </div>
-        ))}
+      <div className="member-info">
+        <div className="member-header">멤버 정보</div>
+        <div className="members">
+          {data.members.map((member, index) => (
+            <div className="member" key={index}>
+              <img
+                src={member.memberImg || "basic.jpg"}
+                alt={`Member ${index}`}
+                className="img-thumbnail"
+              />
+            </div>
+          ))}
+        </div>
+        <div className="member-count">
+          {data.members.length}/{data.totalRecruits}
+        </div>
+      </div>
+      <p className="event-description">{data.comment}</p>
+      <div className="related-events">
+        <h3>유사한 크루</h3>
+        <div className="related-cards">
+          {data.recommends.map((item, index) => (
+            <div className="card" key={index}>
+              <img
+                src={item.crewImg || "basic.jpg"}
+                className="card-image"
+                alt={item.crewName}
+              />
+              <div className="card-content">
+                <h5 className="card-title">{item.crewName}</h5>
+                <p className="card-date">운동 종목: {item.exerciseName}</p>
+                <p className="card-cost">참가비: {item.crewCost}원</p>
+                <p className="card-participants">
+                  모집 인원: {item.currentRecruits}/{item.totalRecruits}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
