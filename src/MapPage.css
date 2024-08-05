@@ -4,25 +4,6 @@
   padding: 20px; /* 상하좌우 padding 추가 */
 }
 
-.header {
-  background-color: #ffed92;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-}
-
-.logo {
-  font-size: 52px;
-  font-family: "VITRO CORE OTF", sans-serif;
-  font-weight: 900;
-}
-
-.nav {
-  display: flex;
-  list-style: none;
-}
-
 .nav-item {
   margin: 0 10px;
 }
