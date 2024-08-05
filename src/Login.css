@@ -45,26 +45,32 @@
   font-size: 14px;
 }
 
-.login-btn,
-.signup-btn {
-  width: 100%;
-  padding: 10px;
+.kakao-login-btn {
+  background-color: transparent;
   border: none;
-  border-radius: 5px;
-  font-size: 14px;
   cursor: pointer;
-  margin-top: 10px;
+  padding: 0;
+  margin-bottom: 10px; /* 버튼 간격 추가 */
 }
 
-.login-btn {
-  background-color: #f8e998;
-  color: black;
+.kakao-login-btn img {
+  width: 100%; /* 필요에 따라 이미지 크기를 조정 */
+  height: auto;
 }
 
 .signup-btn {
-  background-color: white;
-  color: #333;
-  border: 1px solid #ddd;
+  display: inline-block;
+  width: 55%; /* 카카오 로그인 이미지와 동일한 너비 설정 */
+  text-align: center;
+  padding: 10px 0;
+  background-color: #ffeb00;
+  color: #000;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none; /* 버튼 스타일 통일 */
 }
 
 .forgot-password {
