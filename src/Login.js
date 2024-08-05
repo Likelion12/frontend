@@ -48,7 +48,7 @@ const Login = () => {
 
   const handleKakaoLogin = () => {
     const clientId = "220ac935aaf5aa43884ee21823d82237"; // 발급받은 클라이언트 ID
-    const redirectUri = "http://localhost:3000/login/"; // 설정한 리디렉션 URI
+    const redirectUri = "http://localhost:3000"; // 설정한 리디렉션 URI
     const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`;
     window.location.href = kakaoAuthUrl;
   };

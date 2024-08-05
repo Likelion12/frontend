@@ -21,7 +21,7 @@ body {
 } /*헤더 상단 고정*/
 
 .header .logo {
-  font-size: 34px;
+  font-size: 34px !important;
   font-weight: bold;
   margin-right: 20px;
   margin-top: -3px;

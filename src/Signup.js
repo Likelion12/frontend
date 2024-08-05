@@ -106,9 +106,6 @@ const Signup = () => {
           <button className="kakao-sign-btn" onClick={handleKakaoSignup}>
             카카오로 회원가입
           </button>
-          <button type="submit" className="submit-btn">
-            회원가입
-          </button>
         </form>
         {responseMessage && <p>{responseMessage}</p>}
       </div>
