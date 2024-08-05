@@ -25,7 +25,7 @@ const App = () => {
       <div className="app">
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/detail/:id" element={<Detail token={token} />} />
           <Route path="/Social" element={<Social />} />
           <Route path="/crew" element={<CrewDetail />} />
           <Route path="/login" element={<Login setToken={setToken} />} />
