@@ -1,0 +1,81 @@
+.login-icon {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+} /* 로그인 아이콘 */
+
+.login-icon img {
+  width: 100%;
+  margin-top: -7px;
+  object-fit: cover;
+  cursor: pointer;
+} /* 로그인 아이콘 */
+
+a {
+  color: black;
+} /* 기본 글씨 색 */
+
+a:visited {
+  color: black;
+} /* 기본 글씨 색 */
+
+.Crew-button {
+  background-color: #f8e998;
+  border: none;
+  color: black;
+  font-weight: bold;
+  padding: 20px 32px;
+  text-decoration: none;
+  margin-left: -76% !important;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+} /* 크루 등록 버튼 색 */
+
+.nav-link {
+  margin-top: 8px;
+} /* 헤더 글씨 높이 */
+
+.main-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filtering-section {
+  width: 313px;
+  border: 3px solid #ffed92;
+  background: white;
+  padding: 20px;
+}
+
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: #ffed92;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.card .info {
+  margin-top: 10px;
+}
+
+.card .info .title {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.card .info .details {
+  font-size: 16px;
+}
