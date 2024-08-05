@@ -1,6 +1,6 @@
-.crew-container {
-  width: 100%;
-  background: white;
+/* Crew.css */
+.container {
+  padding: 20px;
   font-family: "Hind Siliguri", sans-serif;
 }
 
@@ -10,97 +10,108 @@
   font-family: "VITRO CORE OTF", sans-serif;
 }
 
-.crew-search {
+.event-details {
+  margin-bottom: 20px;
+}
+
+.tags {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-.crew-search input {
-  padding: 10px;
-  margin: 0 10px;
-  border-radius: 8px;
-  border: 1px solid #c0c0c0;
-}
-
-.crew-search button {
+.tag {
+  background-color: #ffed92;
   padding: 10px 20px;
-  background: #ffed92;
-  border: none;
-  border-radius: 8px;
+  border-radius: 16px;
   font-size: 24px;
-  cursor: pointer;
+  color: black;
 }
 
-.crew-register {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 40px 0;
+.member-info {
+  margin-top: 20px;
+  text-align: center;
 }
 
-.register-title {
+.member-header {
+  background-color: #ffed92;
+  padding: 10px;
+  border-radius: 16px 16px 0 0;
   font-size: 32px;
   font-weight: 700;
 }
 
-.register-description {
-  font-size: 20px;
+.members {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background-color: #fff3b0;
+  padding: 10px;
+  border-radius: 0 0 16px 16px;
+}
+
+.member img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.member-count {
+  font-size: 32px;
+  font-weight: 400;
+  text-align: center;
   margin-top: 10px;
 }
 
-.crew-cards {
+.event-description {
+  margin-top: 20px;
+  text-align: left;
+  font-size: 32px;
+}
+
+.related-events {
+  width: 70%;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.related-cards {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 20px;
 }
 
-.crew-card {
+.card {
   width: 292px;
-  border: 3px solid #ffed92;
+  background-color: #ffed92;
   border-radius: 20px;
-  text-align: center;
-  text-decoration: none;
-  color: black;
-}
-
-.crew-card img {
-  width: 100%;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-
-.crew-info {
   padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.crew-title {
+.card-image {
+  width: 100%;
+  height: 261px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.card-content {
+  padding: 10px;
+  text-align: center;
+}
+
+.card-title {
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 10px;
 }
 
-.crew-description {
+.card-date,
+.card-location,
+.card-cost,
+.card-participants {
   font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.crew-tags span {
-  display: inline-block;
-  background: white;
-  padding: 5px 10px;
-  border-radius: 28px;
-  margin: 0 5px;
-}
-
-.crew-cost {
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-.crew-date {
-  font-size: 16px;
-  margin-top: 10px;
+  font-weight: 400;
+  margin: 5px 0;
 }
