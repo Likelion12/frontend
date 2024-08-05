@@ -9,6 +9,7 @@ import Login from "./Login.js";
 import Social from "./Social.js";
 import Header from "./components/Header.js";
 import CrewRegistration from "./CrewRegistration.js";
+import KakaoRedirect from "./kakaoredirection.js";
 import Signup from "./Signup.js";
 import MapPage from "./MapPage.js";
 import Place from "./Place.js";
@@ -25,10 +26,17 @@ const App = () => {
       <div className="app">
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route
+            exact
+            path="/auth/kakao/callback?code={}"
+            element={<kakaoredirection />}
+          />
+          ;
           <Route path="/detail/:id" element={<Detail token={token} />} />
           <Route path="/Social" element={<Social />} />
           <Route path="/crew" element={<CrewDetail />} />
           <Route path="/login" element={<Login setToken={setToken} />} />
+          <Route path="/kakao-redirect" element={<KakaoRedirect />} />
           <Route path="/map" element={<MapPage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/place" element={<Place />} />

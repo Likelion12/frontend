@@ -25,7 +25,7 @@ const Social = () => {
   const sports = [
     { id: 1, name: "축구" },
     { id: 2, name: "농구" },
-    { id: 3, name: "런닝" },
+    { id: 3, name: "러닝" },
     { id: 4, name: "등산" },
     { id: 5, name: "야구" },
     { id: 6, name: "테니스" },
@@ -36,9 +36,8 @@ const Social = () => {
   ];
 
   // Define levels and genders arrays
-  const levels = ["입문", "초급", "중급", "고급"];
-  const genders = ["상관없음", "남성", "여성"];
-  const prices = ["무료", "유료"];
+  const levels = ["C", "B", "A", "S"];
+  const genders = ["U", "M", "F"];
 
   // 서울의 각 구 정의
   const seoulDistricts = [
@@ -214,7 +213,7 @@ const Social = () => {
               <Form.Label>체육시설</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="체육시설 ID"
+                placeholder="체육시설"
                 className="custom-input"
                 value={facilityId}
                 onChange={(e) => setFacilityId(e.target.value)}
