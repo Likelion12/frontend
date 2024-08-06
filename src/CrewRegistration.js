@@ -32,6 +32,29 @@ const CrewRegistration = () => {
   const levels = ["입문", "초급", "중급", "고급"];
   const genders = ["상관없음", "남성", "여성"];
 
+
+  const facilities = [
+    "광장동 실내배드민턴장",
+    "자양유수지 산책로",
+    "언덕배기공원",
+    "구의어린이공원",
+    "동자어린이공원",
+    "자양어린이공원",
+    "광진구민체육센터",
+    "광진문화예술회관",
+    "중곡문화체육센터",
+    "아차산배수지체육공원",
+    "아차산배수지체육공원 인조잔디축구장",
+    "아차산배수지체육공원 (다목적구장-족구)",
+    "광진구민체육센터수영장",
+    "광진문화예술회관수영장",
+    "광진문화예술회관체육관",
+    "중곡문화체육센터수영장",
+    "아차산배수지인조잔디축구장",
+    "아차산배수지체육공원테니스장",
+    "중랑천체육공원인라인스케이트장",
+  ];
+
   const handleToggle = (value, setValue, currentValues) => {
     if (currentValues.includes(value)) {
       setValue(currentValues.filter((v) => v !== value));
@@ -60,7 +83,7 @@ const CrewRegistration = () => {
 
     const jsonData = {
       crewName,
-      activityRegionId: parseInt(activityRegionId),
+      activityRegionId: 6, // 광진구의 ID
       facilityId: parseInt(facilityId),
       exerciseId: parseInt(exerciseId),
       totalRecruits: parseInt(totalRecruits),
@@ -74,12 +97,11 @@ const CrewRegistration = () => {
 
     try {
       const response = await axios.post(
-        "http://example.com/crew-registration",
+        "http://43.202.94.241:8080/crew",
         jsonData,
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         }
       );
@@ -147,28 +169,22 @@ const CrewRegistration = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="formLocation" className="mb-3">
-              <Form.Label>활동 지역 ID</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="활동 지역 ID"
-                className="custom-input"
-                value={activityRegionId}
-                onChange={(e) => setActivityRegionId(e.target.value)}
-                required
-              />
-            </Form.Group>
-
             <Form.Group controlId="formFacility" className="mb-3">
-              <Form.Label>체육 시설 ID</Form.Label>
+              <Form.Label>체육 시설</Form.Label>
               <Form.Control
-                type="number"
-                placeholder="체육 시설 ID"
+                as="select"
                 className="custom-input"
                 value={facilityId}
                 onChange={(e) => setFacilityId(e.target.value)}
                 required
-              />
+              >
+                <option value="">체육 시설 선택</option>
+                {facilities.map((facility, index) => (
+                  <option key={index} value={index + 1}>
+                    {facility}
+                  </option>
+                ))}
+              </Form.Control>
             </Form.Group>
 
             <Form.Group controlId="formExercise" className="mb-3">

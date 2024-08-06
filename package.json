@@ -52,5 +52,8 @@
     "workerDirectory": [
       "PUBLIC_DIR"
     ]
+  },
+  "devDependencies": {
+    "msw": "^2.3.5"
   }
 }
