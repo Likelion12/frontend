@@ -5,6 +5,7 @@ import axios from "axios";
 
 const CrewRegistration = () => {
   const [crewName, setCrewName] = useState("");
+  const [activityRegionId, setActivityRegionId] = useState("");
   const [facilityId, setFacilityId] = useState("");
   const [exerciseId, setExerciseId] = useState("");
   const [totalRecruits, setTotalRecruits] = useState("");
@@ -30,6 +31,7 @@ const CrewRegistration = () => {
   ];
   const levels = ["입문", "초급", "중급", "고급"];
   const genders = ["상관없음", "남성", "여성"];
+
 
   const facilities = [
     "광장동 실내배드민턴장",

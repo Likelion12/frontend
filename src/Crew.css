@@ -4,6 +4,7 @@
   font-family: "Hind Siliguri", sans-serif;
 }
 
+
 .logo {
   font-size: 52px;
   font-weight: 900;
@@ -80,6 +81,15 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+=======
+.card {
+  width: 292px;
+  background-color: #ffed92;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .card-image {
