@@ -95,10 +95,10 @@ const Social = () => {
     setImage(null);
     setImagePreview(null);
   };
-  const token =
-    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJramUyMDY2QG5hdGUuY29tIiwiaWF0IjoxNzIyODU2Njg1LCJleHAiOjE3MjI4NjAyODUsIm1lbWJlcklkIjoxfQ.2ppPXh-1yYhzg801svWkaprzAdECoDLQRyf3VJ9NHH0";
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const token = localStorage.getItem("token");
     const jsonData = {
       socialringName: socialringName,
       activityRegionId: parseInt(activityRegionId),
