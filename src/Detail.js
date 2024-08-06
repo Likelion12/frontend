@@ -1,4 +1,3 @@
-// Detail.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
@@ -9,13 +8,13 @@ const Detail = ({ token }) => {
   const [data, setData] = useState(null);
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const socialringId = queryParams.get("socialringId");
+  const page = queryParams.get("page");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `/socialring?socialringId=${socialringId}`,
+          `/socialring/inquiry?page=${page}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -31,7 +30,7 @@ const Detail = ({ token }) => {
     if (token) {
       fetchData();
     }
-  }, [token, socialringId]);
+  }, [token, page]);
 
   if (!data) {
     return <div>Loading...</div>;
@@ -39,31 +38,9 @@ const Detail = ({ token }) => {
 
   return (
     <div className="container">
-      <h2>{data.socialringName}</h2>
-      <img
-        src={data.socialringImg || "basic.jpg"}
-        alt={data.socialringName}
-        className="img-fluid"
-      />
-      <p>일자: {data.socialringDate}</p>
-      <p>장소: {data.facilityName}</p>
-      <p>가격: {data.socialringCost}원</p>
-      <p>정원: {data.totalRecruits}</p>
-      <h3>멤버 정보</h3>
-      <div>
-        {data.members.map((member, index) => (
-          <img
-            key={index}
-            src={member.memberImg || "basic.jpg"}
-            alt={`Member ${index}`}
-            className="img-thumbnail"
-          />
-        ))}
-      </div>
-      <p>{data.comment}</p>
-      <h3>유사한 소셜링</h3>
+      <h2>소셜링 조회</h2>
       <div className="row">
-        {data.recommands.map((item, index) => (
+        {data.map((item, index) => (
           <div className="col-md-3 mb-3" key={index}>
             <div className="card">
               <img
@@ -74,11 +51,9 @@ const Detail = ({ token }) => {
               <div className="card-body">
                 <h5 className="card-title">{item.socialringName}</h5>
                 <p className="card-text">{item.commentSimple}</p>
-                <p className="card-text">일정: {item.socialringDate}</p>
-                <p className="card-text">참가비: {item.socialringCost}원</p>
-                <p className="card-text">
-                  모집 인원: {item.currentRecruits}/{item.totalRecruits}
-                </p>
+                <p className="card-text">지역: {item.activityRegionName}</p>
+                <p className="card-text">운동 종류: {item.exerciseName}</p>
+                <p className="card-text">레벨: {item.level}</p>
               </div>
             </div>
           </div>
