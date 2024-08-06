@@ -2,7 +2,7 @@ import React from "react";
 
 const Login = () => {
   const kakaoClientId = process.env.REACT_APP_KAKAO_CLIENT_ID;
-  const redirectUri = process.env.REACT_APP_KAKAO_REDIRECT_URI;
+  const redirectUri = `${window.location.origin}/auth/kakao/callback`;
 
   const handleKakaoLogin = () => {
     window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${kakaoClientId}&redirect_uri=${redirectUri}&response_type=code`;
