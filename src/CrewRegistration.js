@@ -69,7 +69,6 @@ const CrewRegistration = () => {
       simpleComment,
       gender,
       level,
-      // 이미지 미리보기 URL을 사용 (이미지를 직접 전송할 수 없는 경우)
       image: imagePreview,
     };
 
@@ -80,7 +79,7 @@ const CrewRegistration = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`, // 로컬 스토리지에서 토큰 가져오기
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         }
       );
@@ -275,191 +274,7 @@ const CrewRegistration = () => {
               <Button variant="warning" type="submit">
                 등록하기
               </Button>
-    <Container fluid className="main-container">
-      <Row className="justify-content-center">
-        <Col md={8} className="form-container">
-          <h4 className="form-title">크루 등록</h4>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formImage" className="text-center mb-3">
-              <input
-                type="file"
-                accept="image/*"
-                style={{ display: "none" }}
-                id="fileInput"
-                onChange={handleImageChange}
-              />
-              <Button
-                variant="light"
-                className="upload-button"
-                onClick={() => document.getElementById("fileInput").click()}
-              >
-                사진 추가
-              </Button>
-              {imagePreview && (
-                <div className="mt-3 position-relative img-preview-container">
-                  <img
-                    src={imagePreview}
-                    alt="미리보기"
-                    className="img-preview"
-                  />
-                  <button
-                    type="button"
-                    className="img-remove-button"
-                    onClick={() => {
-                      setImage(null);
-                      setImagePreview(null);
-                    }}
-                  >
-                    &times;
-                  </button>
-                </div>
-              )}
-            </Form.Group>
-
-            <Form.Group controlId="formTitle" className="mb-3">
-              <Form.Label>크루 명</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="크루 명"
-                className="custom-input"
-                value={crewName}
-                onChange={(e) => setCrewName(e.target.value)}
-                required
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formLocation" className="mb-3">
-              <Form.Label>활동 지역 ID</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="활동 지역 ID"
-                className="custom-input"
-                value={activityRegionId}
-                onChange={(e) => setActivityRegionId(e.target.value)}
-                required
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formFacility" className="mb-3">
-              <Form.Label>체육 시설 ID</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="체육 시설 ID"
-                className="custom-input"
-                value={facilityId}
-                onChange={(e) => setFacilityId(e.target.value)}
-                required
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formExercise" className="mb-3">
-              <Form.Label>운동 종목</Form.Label>
-              <div className="d-flex flex-wrap">
-                {sports.map((sport) => (
-                  <Button
-                    key={sport}
-                    variant={
-                      exerciseId === sport ? "primary" : "outline-primary"
-                    }
-                    className="m-1 sport-button"
-                    onClick={() => setExerciseId(sport)}
-                  >
-                    {sport}
-                  </Button>
-                ))}
-              </div>
-            </Form.Group>
-
-            <Form.Group controlId="formRecruits" className="mb-3">
-              <Form.Label>모집 인원</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="모집 인원"
-                className="custom-input"
-                value={totalRecruits}
-                onChange={(e) => setTotalRecruits(e.target.value)}
-                required
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formCost" className="mb-3">
-              <Form.Label>참가 비용</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="참가 비용"
-                className="custom-input"
-                value={crewCost}
-                onChange={(e) => setCrewCost(e.target.value)}
-                required
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formDescription" className="mb-3">
-              <Form.Label>소개글</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                placeholder="소개글을 입력하세요"
-                className="custom-input"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                required
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formCommentSimple" className="mb-3">
-              <Form.Label>한줄 설명</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="한줄 설명"
-                className="custom-input"
-                value={simpleComment}
-                onChange={(e) => setSimpleComment(e.target.value)}
-                required
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formGender" className="mb-3">
-              <Form.Label>성별</Form.Label>
-              <div className="d-flex flex-wrap">
-                {genders.map((gen) => (
-                  <Button
-                    key={gen}
-                    variant={gender === gen ? "primary" : "outline-primary"}
-                    className="m-1 gender-button"
-                    onClick={() => setGender(gen)}
-                  >
-                    {gen}
-                  </Button>
-                ))}
-              </div>
-            </Form.Group>
-
-            <Form.Group controlId="formLevel" className="mb-3">
-              <Form.Label>참가자 수준</Form.Label>
-              <div className="d-flex flex-wrap">
-                {levels.map((lvl) => (
-                  <Button
-                    key={lvl}
-                    variant={level === lvl ? "primary" : "outline-primary"}
-                    className="m-1 level-button"
-                    onClick={() => setLevel(lvl)}
-                  >
-                    {lvl}
-                  </Button>
-                ))}
-              </div>
-            </Form.Group>
-
-            <div className="text-center">
-              <Button variant="warning" type="submit">
-                등록하기
-              </Button>
             </div>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
           </Form>
         </Col>
       </Row>
