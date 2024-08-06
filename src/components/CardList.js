@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import "../index.css"; // 필요에 따라 CSS 파일을 수정합니다.
 
@@ -21,9 +21,13 @@ const CardList = () => {
   const cardsPerPage = 9;
   const totalCards = 50; // 예시로 총 50개의 카드를 생성
   const [currentPage, setCurrentPage] = useState(0);
+  const location = useLocation();
 
   const cards = Array.from({ length: totalCards }).map((_, index) => (
-    <Link to={`/detail/${index}`} key={index}>
+    <Link
+      to={location.pathname === "/crew" ? `/crew/${index}` : `/detail/${index}`}
+      key={index}
+    >
       <Card index={index} />
     </Link>
   ));

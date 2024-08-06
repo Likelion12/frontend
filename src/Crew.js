@@ -1,92 +1,105 @@
-// Crew.js
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./Crew.css";
 
 const Crew = ({ token }) => {
-  const [data, setData] = useState(null);
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const crewId = queryParams.get("crewId");
+  const { id } = useParams();
+  const [crewData, setCrewData] = useState(null);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/crew?crewId=${crewId}`, {
+        const response = await axios.get(`/api/crew/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        setData(response.data.result);
+        setCrewData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
-    if (token) {
-      fetchData();
-    }
-  }, [token, crewId]);
+    fetchData();
+  }, [id, token]);
 
-  if (!data) {
+  const handleRegisterClick = async () => {
+    try {
+      const response = await axios.post(`/crew/join`, null, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          socialringName: crewData.name,
+        },
+      });
+      if (response.data.code === 1000) {
+        setMessage("요청에 성공하였습니다.");
+      } else {
+        setMessage("요청에 실패하였습니다.");
+      }
+    } catch (error) {
+      setMessage("요청에 실패하였습니다.");
+    }
+  };
+
+  if (!crewData) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="container">
-      <h2>{data.crewName}</h2>
-      <img
-        src={data.crewImg || "basic.jpg"}
-        alt={data.crewName}
-        className="img-fluid main-image"
-      />
-      <div className="event-details">
+    <div className="crew-page">
+      <div className="crew-page-header">
+        <h1>{crewData.name}</h1>
         <div className="tags">
-          <span className="tag">{data.exerciseName}</span>
-          <span className="tag">{data.level}</span>
-          <span className="tag">{data.gender}</span>
+          <span className="tag">{crewData.category}</span>
+          <span className="tag">{crewData.level}</span>
+          <span className="tag">무료</span>
         </div>
-        <p>활동 지역: {data.activityRegionName}</p>
-        <p>모집 인원: {data.totalRecruits}</p>
-        <p>참가비: {data.crewCost}원</p>
+      </div>
+      <div className="event-details">
+        <img src={crewData.image || "placeholder.jpg"} alt={crewData.name} />
+        <p>일자: {crewData.date}</p>
+        <p>장소: {crewData.location}</p>
+        <p>가격: 무료</p>
+        <p>정원: {crewData.totalRecruits}</p>
       </div>
       <div className="member-info">
-        <div className="member-header">멤버 정보</div>
+        <h3 className="member-header">멤버 정보</h3>
         <div className="members">
-          {data.members.map((member, index) => (
+          {crewData.members.map((member, index) => (
             <div className="member" key={index}>
               <img
-                src={member.memberImg || "basic.jpg"}
+                src={member.memberImg || "placeholder.jpg"}
                 alt={`Member ${index}`}
-                className="img-thumbnail"
               />
             </div>
           ))}
         </div>
-        <div className="member-count">
-          {data.members.length}/{data.totalRecruits}
-        </div>
+        <p className="member-count">{`${crewData.members.length}/${crewData.totalRecruits}`}</p>
       </div>
-      <p className="event-description">{data.comment}</p>
+      <p className="event-description">{crewData.description}</p>
+      <button className="register-button" onClick={handleRegisterClick}>
+        등록하기
+      </button>
+      {message && <p>{message}</p>}
       <div className="related-events">
-        <h3>유사한 크루</h3>
+        <h3>관련 소셜링</h3>
         <div className="related-cards">
-          {data.recommends.map((item, index) => (
+          {crewData.recommends.map((recommend, index) => (
             <div className="card" key={index}>
               <img
-                src={item.crewImg || "basic.jpg"}
                 className="card-image"
-                alt={item.crewName}
+                src={recommend.crewImg || "placeholder.jpg"}
+                alt={recommend.crewName}
               />
               <div className="card-content">
-                <h5 className="card-title">{item.crewName}</h5>
-                <p className="card-date">운동 종목: {item.exerciseName}</p>
-                <p className="card-cost">참가비: {item.crewCost}원</p>
-                <p className="card-participants">
-                  모집 인원: {item.currentRecruits}/{item.totalRecruits}
-                </p>
+                <h4 className="card-title">{recommend.crewName}</h4>
+                <p className="card-date">일자: {recommend.crewDate}</p>
+                <p className="card-location">장소: {recommend.facilityName}</p>
+                <p className="card-cost">가격: {recommend.crewCost}</p>
               </div>
             </div>
           ))}

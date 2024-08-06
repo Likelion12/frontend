@@ -13,7 +13,6 @@ const Social = () => {
   const [imagePreview, setImagePreview] = useState(null);
 
   const [socialringName, setSocialringName] = useState("");
-  const [activityRegionId, setActivityRegionId] = useState("");
   const [facilityId, setFacilityId] = useState("");
   const [exerciseId, setExerciseId] = useState("");
   const [socialringDate, setSocialringDate] = useState("");
@@ -39,33 +38,27 @@ const Social = () => {
   const levels = ["C", "B", "A", "S"];
   const genders = ["U", "M", "F"];
 
-  // 서울의 각 구 정의
-  const seoulDistricts = [
-    { id: 1, name: "강남구" },
-    { id: 2, name: "강동구" },
-    { id: 3, name: "강북구" },
-    { id: 4, name: "강서구" },
-    { id: 5, name: "관악구" },
-    { id: 6, name: "광진구" },
-    { id: 7, name: "구로구" },
-    { id: 8, name: "금천구" },
-    { id: 9, name: "노원구" },
-    { id: 10, name: "도봉구" },
-    { id: 11, name: "동대문구" },
-    { id: 12, name: "동작구" },
-    { id: 13, name: "마포구" },
-    { id: 14, name: "서대문구" },
-    { id: 15, name: "서초구" },
-    { id: 16, name: "성동구" },
-    { id: 17, name: "성북구" },
-    { id: 18, name: "송파구" },
-    { id: 19, name: "양천구" },
-    { id: 20, name: "영등포구" },
-    { id: 21, name: "용산구" },
-    { id: 22, name: "은평구" },
-    { id: 23, name: "종로구" },
-    { id: 24, name: "중구" },
-    { id: 25, name: "중랑구" },
+  // Define the facilities in 광진구
+  const facilities = [
+    "광장동 실내배드민턴장",
+    "자양유수지 산책로",
+    "언덕배기공원",
+    "구의어린이공원",
+    "동자어린이공원",
+    "자양어린이공원",
+    "광진구민체육센터",
+    "광진문화예술회관",
+    "중곡문화체육센터",
+    "아차산배수지체육공원",
+    "아차산배수지체육공원 인조잔디축구장",
+    "아차산배수지체육공원 (다목적구장-족구)",
+    "광진구민체육센터수영장",
+    "광진문화예술회관수영장",
+    "광진문화예술회관체육관",
+    "중곡문화체육센터수영장",
+    "아차산배수지인조잔디축구장",
+    "아차산배수지체육공원테니스장",
+    "중랑천체육공원인라인스케이트장",
   ];
 
   const handleToggle = (value, setValue, currentValues) => {
@@ -95,13 +88,15 @@ const Social = () => {
     setImage(null);
     setImagePreview(null);
   };
+
   const token =
     "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJramUyMDY2QG5hdGUuY29tIiwiaWF0IjoxNzIyODU2Njg1LCJleHAiOjE3MjI4NjAyODUsIm1lbWJlcklkIjoxfQ.2ppPXh-1yYhzg801svWkaprzAdECoDLQRyf3VJ9NHH0";
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const jsonData = {
       socialringName: socialringName,
-      activityRegionId: parseInt(activityRegionId),
+      activityRegionId: 6, // 광진구의 ID
       facilityId: parseInt(facilityId),
       exerciseId: parseInt(exerciseId),
       totalRecruits: parseInt(capacity),
@@ -120,7 +115,7 @@ const Social = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // 로컬 스토리지에서 토큰 가져오기
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -191,34 +186,22 @@ const Social = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="formLocation" className="mb-3">
-              <Form.Label>활동지역</Form.Label>
-              <Form.Control
-                as="select"
-                className="custom-input"
-                value={activityRegionId}
-                onChange={(e) => setActivityRegionId(e.target.value)}
-                required
-              >
-                <option value="">활동지역 선택</option>
-                {seoulDistricts.map((district) => (
-                  <option key={district.id} value={district.id}>
-                    {district.name}
-                  </option>
-                ))}
-              </Form.Control>
-            </Form.Group>
-
             <Form.Group controlId="formFacility" className="mb-3">
               <Form.Label>체육시설</Form.Label>
               <Form.Control
-                type="text"
-                placeholder="체육시설"
+                as="select"
                 className="custom-input"
                 value={facilityId}
                 onChange={(e) => setFacilityId(e.target.value)}
                 required
-              />
+              >
+                <option value="">체육시설 선택</option>
+                {facilities.map((facility, index) => (
+                  <option key={index} value={index + 1}>
+                    {facility}
+                  </option>
+                ))}
+              </Form.Control>
             </Form.Group>
 
             <Form.Group controlId="formExercise" className="mb-3">

@@ -1,27 +1,22 @@
-// Detail.js
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.css";
+
+import "./Detail.css"; // 필요한 CSS 파일
 
 const Detail = ({ token }) => {
+  const { id } = useParams();
   const [data, setData] = useState(null);
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const socialringId = queryParams.get("socialringId");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `/socialring?socialringId=${socialringId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.get(`/crew?crewId=${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setData(response.data.result);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -31,58 +26,83 @@ const Detail = ({ token }) => {
     if (token) {
       fetchData();
     }
-  }, [token, socialringId]);
+  }, [token, id]);
+
+  const handleRegisterClick = async () => {
+    try {
+      const response = await axios.post(`/socialring/join`, null, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          socialringName: data.crewName,
+        },
+      });
+      if (response.data.code === 1000) {
+        setMessage("요청에 성공하였습니다.");
+      } else {
+        setMessage("요청에 실패하였습니다.");
+      }
+    } catch (error) {
+      setMessage("요청에 실패하였습니다.");
+    }
+  };
 
   if (!data) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="container">
-      <h2>{data.socialringName}</h2>
-      <img
-        src={data.socialringImg || "basic.jpg"}
-        alt={data.socialringName}
-        className="img-fluid"
-      />
-      <p>일자: {data.socialringDate}</p>
-      <p>장소: {data.facilityName}</p>
-      <p>가격: {data.socialringCost}원</p>
-      <p>정원: {data.totalRecruits}</p>
-      <h3>멤버 정보</h3>
-      <div>
-        {data.members.map((member, index) => (
-          <img
-            key={index}
-            src={member.memberImg || "basic.jpg"}
-            alt={`Member ${index}`}
-            className="img-thumbnail"
-          />
-        ))}
-      </div>
-      <p>{data.comment}</p>
-      <h3>유사한 소셜링</h3>
-      <div className="row">
-        {data.recommands.map((item, index) => (
-          <div className="col-md-3 mb-3" key={index}>
-            <div className="card">
+    <div>
+      <div className="detail">
+        <h1>{data.crewName}</h1>
+        <div className="tags">
+          <span className="tag">런닝</span>
+          <span className="tag">초급</span>
+          <span className="tag">무료</span>
+        </div>
+        <img src={data.crewImg || "placeholder.jpg"} alt={data.crewName} />
+        <p>일자: {data.crewDate}</p>
+        <p>장소: {data.facilityName}</p>
+        <p>가격: {data.crewCost}</p>
+        <p>정원: {data.totalRecruits}</p>
+        <div className="member-info">
+          <h3>멤버 정보</h3>
+          <div className="members">
+            {data.members.map((member, index) => (
               <img
-                src={item.socialringImg || "basic.jpg"}
-                className="card-img-top"
-                alt={item.socialringName}
+                key={index}
+                src={member.memberImg || "placeholder.jpg"}
+                alt={`Member ${index}`}
               />
-              <div className="card-body">
-                <h5 className="card-title">{item.socialringName}</h5>
-                <p className="card-text">{item.commentSimple}</p>
-                <p className="card-text">일정: {item.socialringDate}</p>
-                <p className="card-text">참가비: {item.socialringCost}원</p>
-                <p className="card-text">
-                  모집 인원: {item.currentRecruits}/{item.totalRecruits}
-                </p>
-              </div>
+            ))}
+          </div>
+          <p>{`${data.members.length}/${data.totalRecruits}`}</p>
+        </div>
+        <p>{data.comment}</p>
+        <button className="register-button" onClick={handleRegisterClick}>
+          등록하기
+        </button>
+        {message && <p>{message}</p>}
+        <div className="related-events">
+          <h3>관련 소셜링</h3>
+          <div className="card-list-container">
+            <div className="card-list">
+              {data.recommends.map((recommend, index) => (
+                <div className="card" key={index}>
+                  <img
+                    src={recommend.crewImg || "placeholder.jpg"}
+                    alt={recommend.crewName}
+                  />
+                  <h4>{recommend.crewName}</h4>
+                  <p>일자: {recommend.crewDate}</p>
+                  <p>장소: {recommend.facilityName}</p>
+                  <p>가격: {recommend.crewCost}</p>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home.js";
@@ -31,10 +30,10 @@ const App = () => {
             path="/auth/kakao/callback?code={}"
             element={<kakaoredirection />}
           />
-          ;
           <Route path="/detail/:id" element={<Detail token={token} />} />
           <Route path="/Social" element={<Social />} />
           <Route path="/crew" element={<CrewDetail />} />
+          <Route path="/crew/:id" element={<Crew />} />
           <Route path="/login" element={<Login setToken={setToken} />} />
           <Route path="/kakao-redirect" element={<KakaoRedirect />} />
           <Route path="/map" element={<MapPage />} />
