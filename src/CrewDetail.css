@@ -32,10 +32,6 @@ a:visited {
   border-radius: 8px;
 } /* 크루 등록 버튼 색 */
 
-.nav-link {
-  margin-top: 8px;
-} /* 헤더 글씨 높이 */
-
 .main-content {
   display: flex;
   justify-content: space-between;

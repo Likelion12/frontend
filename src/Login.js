@@ -1,26 +1,23 @@
-import React, { useEffect } from "react";
-import { useLocation, useNavigate, Link } from "react-router-dom";
-import axios from "axios";
-import "./Login.css";
+import React from "react";
 
 const Login = () => {
+  const kakaoClientId = process.env.REACT_APP_KAKAO_CLIENT_ID;
+  const redirectUri = process.env.REACT_APP_KAKAO_REDIRECT_URI;
+
   const handleKakaoLogin = () => {
-    const clientId = "0220a84053d6e6f8d8e296711371b7ec"; // 발급받은 클라이언트 ID
-    const redirectUri = "http://localhost:3000/"; // 설정한 리디렉션 URI
-    const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`;
-    window.location.href = kakaoAuthUrl;
+    window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${kakaoClientId}&redirect_uri=${redirectUri}&response_type=code`;
   };
 
   return (
-    <div className="login-container">
-      <h2>로그인</h2>
-      <p>운동할 사람이 없을 땐, DoGether!</p>
-      <button className="kakao-login-btn" onClick={handleKakaoLogin}>
-        카카오로 로그인
+    <div>
+      <h1 className="sign-title">DoGether!</h1>
+      <p className="sign-subtitle">운동할 사람이 없을 땐, DoGether!</p>
+      <button onClick={handleKakaoLogin} className="kakao-login-button">
+        <img
+          src={`${process.env.PUBLIC_URL}/kakao_login.png`}
+          alt="Login with Kakao"
+        />
       </button>
-      <Link to="/Signup" className="signup-btn">
-        회원가입
-      </Link>
     </div>
   );
 };

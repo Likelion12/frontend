@@ -1,12 +1,10 @@
 .crew-filter {
+  width: 18%;
   padding: 20px;
-  border: 1px solid #ffed92;
+  background-color: #ffffff;
+  border: 2.5px solid #ffeb3b;
   border-radius: 8px;
-  background-color: #fff;
-}
-
-.crew-filter .form-group {
-  margin-bottom: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .filter-button {
@@ -14,9 +12,18 @@
   border: none;
   color: black;
   font-weight: bold;
-  padding: 10px 20px;
+  padding: 10px 30px;
   text-decoration: none;
   font-size: 16px;
   cursor: pointer;
   border-radius: 8px;
 }
+
+.crew-filter hr {
+  width: 100%;
+}
+
+.crew-filter form div {
+  margin-bottom: 8px;
+  text-align: center;
+} /*필터링 항목들*/

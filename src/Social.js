@@ -25,7 +25,7 @@ const Social = () => {
   const sports = [
     { id: 1, name: "축구" },
     { id: 2, name: "농구" },
-    { id: 3, name: "런닝" },
+    { id: 3, name: "러닝" },
     { id: 4, name: "등산" },
     { id: 5, name: "야구" },
     { id: 6, name: "테니스" },
@@ -36,9 +36,37 @@ const Social = () => {
   ];
 
   // Define levels and genders arrays
-  const levels = ["입문", "초급", "중급", "고급"];
-  const genders = ["상관없음", "남성", "여성"];
-  const prices = ["무료", "유료"];
+  const levels = ["C", "B", "A", "S"];
+  const genders = ["U", "M", "F"];
+
+  // 서울의 각 구 정의
+  const seoulDistricts = [
+    { id: 1, name: "강남구" },
+    { id: 2, name: "강동구" },
+    { id: 3, name: "강북구" },
+    { id: 4, name: "강서구" },
+    { id: 5, name: "관악구" },
+    { id: 6, name: "광진구" },
+    { id: 7, name: "구로구" },
+    { id: 8, name: "금천구" },
+    { id: 9, name: "노원구" },
+    { id: 10, name: "도봉구" },
+    { id: 11, name: "동대문구" },
+    { id: 12, name: "동작구" },
+    { id: 13, name: "마포구" },
+    { id: 14, name: "서대문구" },
+    { id: 15, name: "서초구" },
+    { id: 16, name: "성동구" },
+    { id: 17, name: "성북구" },
+    { id: 18, name: "송파구" },
+    { id: 19, name: "양천구" },
+    { id: 20, name: "영등포구" },
+    { id: 21, name: "용산구" },
+    { id: 22, name: "은평구" },
+    { id: 23, name: "종로구" },
+    { id: 24, name: "중구" },
+    { id: 25, name: "중랑구" },
+  ];
 
   const handleToggle = (value, setValue, currentValues) => {
     if (currentValues.includes(value)) {
@@ -70,29 +98,29 @@ const Social = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const formData = new FormData();
-    formData.append("socialringName", socialringName);
-    formData.append("socialringImg", image);
-    formData.append("activityRegionId", parseInt(activityRegionId));
-    formData.append("facilityId", parseInt(facilityId));
-    formData.append("exerciseId", parseInt(exerciseId));
-    formData.append("totalRecruits", parseInt(capacity));
-    formData.append("socialringDate", socialringDate);
-    formData.append("socialringCost", parseInt(socialringCost));
-    formData.append("comment", comment);
-    formData.append("commentSimple", commentSimple);
-    formData.append("gender", genderValue);
-    formData.append("level", levelValue);
+    const token = localStorage.getItem("token");
+    const jsonData = {
+      socialringName: socialringName,
+      activityRegionId: parseInt(activityRegionId),
+      facilityId: parseInt(facilityId),
+      exerciseId: parseInt(exerciseId),
+      totalRecruits: parseInt(capacity),
+      socialringDate: socialringDate,
+      socialringCost: parseInt(socialringCost),
+      comment: comment,
+      commentSimple: commentSimple,
+      gender: genderValue,
+      level: levelValue,
+    };
 
     try {
       const response = await axios.post(
         "http://43.202.94.241:8080/socialring",
-        formData,
+        jsonData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`, // 로컬 스토리지에서 토큰 가져오기
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // 로컬 스토리지에서 토큰 가져오기
           },
         }
       );
@@ -166,20 +194,26 @@ const Social = () => {
             <Form.Group controlId="formLocation" className="mb-3">
               <Form.Label>활동지역</Form.Label>
               <Form.Control
-                type="text"
-                placeholder="활동지역 ID"
+                as="select"
                 className="custom-input"
                 value={activityRegionId}
                 onChange={(e) => setActivityRegionId(e.target.value)}
                 required
-              />
+              >
+                <option value="">활동지역 선택</option>
+                {seoulDistricts.map((district) => (
+                  <option key={district.id} value={district.id}>
+                    {district.name}
+                  </option>
+                ))}
+              </Form.Control>
             </Form.Group>
 
             <Form.Group controlId="formFacility" className="mb-3">
               <Form.Label>체육시설</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="체육시설 ID"
+                placeholder="체육시설"
                 className="custom-input"
                 value={facilityId}
                 onChange={(e) => setFacilityId(e.target.value)}

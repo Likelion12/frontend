@@ -49,7 +49,7 @@ const Main = ({ token }) => {
       <div className="col-md-4 mb-3" key={index}>
         <div className="card">
           {/* Link로 Detail 페이지로 이동 */}
-          <Link to="/detail">
+          <Link to={`/detail?socialringId=${item.socialring_id}`}>
             <img
               src={item[`${type}_img`] || "basic.jpg"}
               className="card-img-top"

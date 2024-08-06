@@ -7,6 +7,9 @@ body {
 
 .app {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 } /*기본 정렬 센터*/
 
 .header {
@@ -16,21 +19,26 @@ body {
   background-color: #f8e998;
 }
 
+.card-list-container {
+  width: 70%;
+  margin-bottom: 30px;
+}
 .app-content {
   padding-top: 10px;
 } /*헤더 상단 고정*/
 
 .header .logo {
-  font-size: 34px;
+  font-size: 34px !important;
   font-weight: bold;
   margin-right: 20px;
-  margin-top: -3px;
+  margin-top: -8px;
 } /*DoGether 텍스트로고 설정*/
 
 .header nav ul {
   display: flex;
   list-style: none;
   padding: 0;
+  font-size: 18px !important;
 } /*헤더 글씨*/
 
 .header nav ul li {
@@ -50,6 +58,7 @@ body {
   padding: 10px;
   border-radius: 8px;
   border: 2.5px solid #ffeb3b;
+  justify-content: center;
 }
 
 .main-content {
@@ -81,9 +90,12 @@ body {
 }
 
 .card {
-  background-color: #fff;
+  width: 292px;
+  gap: 100px;
+  background-color: #ffed92;
+  border-radius: 20px;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .card img {
@@ -100,4 +112,30 @@ body {
 .card-content .date {
   font-size: 12px;
   color: #000000;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 60px 0;
+  justify-content: center;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination li a {
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  cursor: pointer;
+  color: #ffeb3b;
+  text-decoration: none;
+}
+
+.pagination li.active a {
+  background-color: #ffeb3b;
+  color: white;
+  border-color: black;
 }

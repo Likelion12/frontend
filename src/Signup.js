@@ -9,11 +9,12 @@ const Signup = () => {
   const [gender, setGender] = useState("");
   const [exercise, setExercise] = useState(""); // 운동 종목을 하나의 문자열로 변경
   const [responseMessage, setResponseMessage] = useState("");
+  const [ws, setWs] = useState(null);
 
   const handleKakaoSignup = () => {
     const clientId = "220ac935aaf5aa43884ee21823d82237";
-    const redirectUri = "	http://localhost:3000/"; // 설정한 리디렉션 URI
-    const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`;
+    const redirect_uri = "http://localhost:3000/"; // 설정한 리디렉션 URI
+    const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirect_uri}&response_type=code`;
 
     window.location.href = kakaoAuthUrl;
   };
@@ -38,7 +39,7 @@ const Signup = () => {
 
     // Axios를 사용하여 POST 요청 보내기
     axios
-      .post("/user/signup", requestData)
+      .post("http://43.202.94.241:8080/user/signup", requestData) // 서버 URL로 변경
       .then((response) => {
         const data = response.data;
         console.log("Response data:", data);
@@ -46,6 +47,10 @@ const Signup = () => {
         if (data.code === 1000) {
           setResponseMessage("회원가입이 성공적으로 완료되었습니다!");
           console.log("회원가입 성공:", data.result);
+          // WebSocket을 통해 서버에 메시지 보내기
+          if (ws) {
+            ws.send(JSON.stringify({ type: "signup", data: requestData }));
+          }
         } else {
           setResponseMessage("회원가입에 실패했습니다. 다시 시도해 주세요.");
           console.error("회원가입 실패:", data.message);

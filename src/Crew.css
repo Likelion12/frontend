@@ -4,17 +4,11 @@
   font-family: "Hind Siliguri", sans-serif;
 }
 
-h2 {
-  font-size: 32px;
-  font-weight: 700;
-  color: black;
-}
 
-img.img-fluid {
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
-  margin-bottom: 20px;
+.logo {
+  font-size: 52px;
+  font-weight: 900;
+  font-family: "VITRO CORE OTF", sans-serif;
 }
 
 .event-details {
@@ -89,6 +83,7 @@ img.img-fluid {
   gap: 20px;
 }
 
+=======
 .card {
   width: 292px;
   background-color: #ffed92;
