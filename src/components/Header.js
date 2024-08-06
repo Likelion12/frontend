@@ -29,7 +29,7 @@ const Header = () => {
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/map">
-              지도
+              마이페이지
             </Link>
           </li>
         </ul>
