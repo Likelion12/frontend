@@ -3,28 +3,6 @@
   font-family: "Hind Siliguri", sans-serif;
 }
 
-.nav-link.active {
-  font-weight: 700;
-}
-
-.login-icon img {
-  width: 50px;
-  height: 50px;
-}
-
-.content-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-}
-
-h1 {
-  font-size: 64px;
-  font-weight: 700;
-  color: black;
-}
-
 .event-details {
   display: flex;
   gap: 20px;
@@ -136,38 +114,4 @@ h1 {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
-}
-
-.card {
-  width: 292px;
-  background-color: #ffed92;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.card-image {
-  width: 100%;
-  height: 261px;
-  object-fit: cover;
-  border-radius: 16px;
-}
-
-.card-content {
-  padding: 10px;
-  text-align: center;
-}
-
-.card-title {
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.card-date,
-.card-location,
-.card-cost,
-.card-participants {
-  font-size: 20px;
-  font-weight: 400;
-  margin: 5px 0;
 }

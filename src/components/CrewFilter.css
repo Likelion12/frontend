@@ -1,12 +1,10 @@
 .crew-filter {
+  width: 18%;
   padding: 20px;
-  border: 1px solid #ffed92;
+  background-color: #ffffff;
+  border: 2.5px solid #ffeb3b;
   border-radius: 8px;
-  background-color: #fff;
-}
-
-.crew-filter .form-group {
-  margin-bottom: 60%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .filter-button {
@@ -14,9 +12,34 @@
   border: none;
   color: black;
   font-weight: bold;
-  padding: 10px 20px;
+  padding: 10px 30px;
   text-decoration: none;
   font-size: 16px;
   cursor: pointer;
   border-radius: 8px;
 }
+
+.crew-filter form div {
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.crew-filter form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.crew-filter hr {
+  width: 100%;
+}
+
+.CrewFilter-form {
+  width: 18%;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 2.5px solid #ffeb3b;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+} /*필터링 박스*/

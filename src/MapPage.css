@@ -4,22 +4,6 @@
   padding: 20px; /* 상하좌우 padding 추가 */
 }
 
-.nav-item {
-  margin: 0 10px;
-}
-
-.nav-link {
-  text-decoration: none;
-  color: black;
-  font-size: 32px;
-  font-family: "Hind Siliguri", sans-serif;
-}
-
-.login-icon img {
-  width: 50px;
-  height: 50px;
-}
-
 .content-container {
   display: flex;
   flex-direction: column;
@@ -41,16 +25,6 @@
   font-family: "Hind Siliguri", sans-serif;
 }
 
-.search-button {
-  background-color: #ffed92;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 16px;
-  font-size: 18px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
 .main-map {
   width: 100%;
   height: 500px;
@@ -66,35 +40,4 @@
   font-size: 32px;
   font-family: "Hind Siliguri", sans-serif;
   margin: 20px 0;
-}
-
-.cards {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding: 0 20px; /* 좌우 padding 추가 */
-}
-
-.card {
-  background-color: white;
-  border-radius: 20px;
-  width: 261px;
-  padding: 20px;
-  flex-shrink: 0;
-  border: 1px solid #ddd;
-}
-
-.card img {
-  width: 100%;
-  height: 261px;
-  border-radius: 16px;
-}
-
-.card-content {
-  font-size: 18px;
-  font-family: "Hind Siliguri", sans-serif;
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }

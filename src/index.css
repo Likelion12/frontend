@@ -24,13 +24,14 @@ body {
   font-size: 34px !important;
   font-weight: bold;
   margin-right: 20px;
-  margin-top: -3px;
+  margin-top: -8px;
 } /*DoGether 텍스트로고 설정*/
 
 .header nav ul {
   display: flex;
   list-style: none;
   padding: 0;
+  font-size: 18px !important;
 } /*헤더 글씨*/
 
 .header nav ul li {
